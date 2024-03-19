@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZdAvldGR6jRh6QiWHq7zrBAFpD4uPUdLHeTCNjJaiOJTUvTRFJ/L1z2AXrySCGVUhHH4NGDhxYjHdZmKa87+JQ==",
+  "dgSpecHash": "iKye6bJsi6WT4mYSAGZKlwCyc07lGmauqxwg7QRX9dKU3j9LclYqCUid6KHLv2HgPAj/T9KdIqMeU3NSacqPmQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user1\\Desktop\\הנדסת תוכנה\\שנה ב\\Practicum\\server\\Server.Data\\Server.Data.csproj",
+  "projectFilePath": "C:\\Users\\user1\\Desktop\\הנדסת תוכנה\\שנה ב\\Practicum\\Project\\server\\Server.Data\\Server.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user1\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",

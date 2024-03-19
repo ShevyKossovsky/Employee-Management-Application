@@ -41,7 +41,6 @@ namespace Server.Data.Repositories
             var employee = await _context.EmployeesList.FindAsync(code);
             employee.IsActive = false;
             await _context.SaveChangesAsync();
-
         }
      
         public async Task<Employee> UpdateEmployeeAsync(int code, Employee employee)

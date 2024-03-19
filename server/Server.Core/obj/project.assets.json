@@ -949,11 +949,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user1\\Desktop\\הנדסת תוכנה\\שנה ב\\Practicum\\server\\Server.Core\\Server.Core.csproj",
+      "projectUniqueName": "C:\\Users\\user1\\Desktop\\הנדסת תוכנה\\שנה ב\\Practicum\\Project\\server\\Server.Core\\Server.Core.csproj",
       "projectName": "Server.Core",
-      "projectPath": "C:\\Users\\user1\\Desktop\\הנדסת תוכנה\\שנה ב\\Practicum\\server\\Server.Core\\Server.Core.csproj",
+      "projectPath": "C:\\Users\\user1\\Desktop\\הנדסת תוכנה\\שנה ב\\Practicum\\Project\\server\\Server.Core\\Server.Core.csproj",
       "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user1\\Desktop\\הנדסת תוכנה\\שנה ב\\Practicum\\server\\Server.Core\\obj\\",
+      "outputPath": "C:\\Users\\user1\\Desktop\\הנדסת תוכנה\\שנה ב\\Practicum\\Project\\server\\Server.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

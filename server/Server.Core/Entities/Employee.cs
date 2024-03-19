@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace Server.Core.Entities
     {
         static int count = 0;
 
-        public int Code { get;  }
+        public int Code { get;}
 
         public string FirstName { get; set; }
 
@@ -32,8 +33,7 @@ namespace Server.Core.Entities
 
         public bool IsActive { get; set; }
 
-
-        public List<Position> PositionsList { get; set; }
+        public List<EmployeePosition> positionsList { get; set; }
 
         public Employee()
         {

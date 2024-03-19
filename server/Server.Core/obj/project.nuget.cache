@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JssVaJPLrIlyr4HMfQdiz8JnZnb0F+b6j/cfKcZYTbbEHDSfHKTGgk4n8tN7arLfeYLCjBkEg3Ekap8s3fT1oA==",
+  "dgSpecHash": "zITs3bJnbRRkl0KvTcy52Q/QqIKUPbu7PnQjOXIk/C/2qPxYSwV3yVhyoBdx+0XbZjbx4JAba699sOrZrjVJ4A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user1\\Desktop\\הנדסת תוכנה\\שנה ב\\Practicum\\server\\Server.Core\\Server.Core.csproj",
+  "projectFilePath": "C:\\Users\\user1\\Desktop\\הנדסת תוכנה\\שנה ב\\Practicum\\Project\\server\\Server.Core\\Server.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user1\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

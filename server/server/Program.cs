@@ -3,6 +3,7 @@ using Server.Core.Repositories;
 using Server.Core.Services;
 using Server.Data;
 using Server.Data.Repositories;
+using Server.Service.Services;
 using Solid.Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,15 +16,22 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
 
 
 //Dependency Injection
+
 builder.Services.AddScoped<IEmployeeService,EmployeeService>();
+builder.Services.AddScoped<IPositionService,PositionService>();
+
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped<IPositionRepository, PositionRepository>();
+
 builder.Services.AddDbContext<DataContext>();
+
 builder.Services.AddAutoMapper(typeof(MappingProfile));
-builder.Services.AddDbContext<DataContext>();
+
+var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

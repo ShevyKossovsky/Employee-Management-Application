@@ -11,6 +11,7 @@
           "Microsoft.AspNetCore.OpenApi": "7.0.5",
           "Microsoft.EntityFrameworkCore.Design": "7.0.0",
           "Server.Data": "1.0.0",
+          "Server.Service": "1.0.0",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
@@ -695,6 +696,14 @@
         "runtime": {
           "Server.Data.dll": {}
         }
+      },
+      "Server.Service/1.0.0": {
+        "dependencies": {
+          "Server.Core": "1.0.0"
+        },
+        "runtime": {
+          "Server.Service.dll": {}
+        }
       }
     }
   },
@@ -1228,6 +1237,11 @@
       "sha512": ""
     },
     "Server.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Server.Service/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

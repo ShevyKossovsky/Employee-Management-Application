@@ -24,9 +24,9 @@ namespace Server.Data.Repositories
             return await _context.EmployeesList.ToListAsync();
         }
 
-        public async Task<Employee> GetByIdAsync(int code)
+        public async Task<Employee> GetByIdAsync(int id)
         {
-            return _context.EmployeesList.Find(code);
+            return _context.EmployeesList.Find(id);
         }
 
         public async Task<Employee> AddEmployeeAsync(Employee employee)
@@ -36,16 +36,16 @@ namespace Server.Data.Repositories
             return employee;
         }
 
-        public async Task DeleteEmployeeAsync(int code)
+        public async Task DeleteEmployeeAsync(int id)
         {
-            var employee = await _context.EmployeesList.FindAsync(code);
+            var employee = await _context.EmployeesList.FindAsync(id);
             employee.IsActive = false;
             await _context.SaveChangesAsync();
         }
      
-        public async Task<Employee> UpdateEmployeeAsync(int code, Employee employee)
+        public async Task<Employee> UpdateEmployeeAsync(int id, Employee employee)
         {
-            var updateEmployee=_context.EmployeesList.Find(code);
+            var updateEmployee=_context.EmployeesList.Find(id);
             updateEmployee = employee;
             await _context.SaveChangesAsync();
             return updateEmployee;

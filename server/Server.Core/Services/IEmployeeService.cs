@@ -12,12 +12,12 @@ namespace Server.Core.Services
 
         Task<List<Employee>> GetEmployeeAsync();
 
-        Task<Employee> GetByIdAsync(int code);
+        Task<Employee> GetByIdAsync(int id);
 
         Task<Employee> AddEmployeeAsync(Employee employee);
 
-        Task<Employee> UpdateEmployeeAsync(int code, Employee employee);
+        Task<Employee> UpdateEmployeeAsync(int id, Employee employee);
 
-        Task DeleteEmployeeAsync(int code);
+        Task DeleteEmployeeAsync(int id);
     }
 }

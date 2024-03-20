@@ -36,16 +36,11 @@ namespace Server.Core.Entities
 
     public class Position
     {
-        static int count = 0;
-
-        public int Code { get; }
+        public int Id { get; set; }
         public PositionName Name { get; set; }
 
-        public Position()
-        {
-            Code = count++;
-        }
+    
     }
 
-    
+
 }

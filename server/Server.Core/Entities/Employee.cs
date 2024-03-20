@@ -15,9 +15,7 @@ namespace Server.Core.Entities
     }
     public class Employee
     {
-        static int count = 0;
-
-        public int Code { get;}
+        public int Id { get; set; }
 
         public string FirstName { get; set; }
 
@@ -25,7 +23,7 @@ namespace Server.Core.Entities
 
         public string IdNumber { get; set; }
 
-        public Gender Gender { get; set; } 
+        public Gender Gender { get; set; }
 
         public DateTime EmploymentStartDate { get; set; }
 
@@ -33,11 +31,7 @@ namespace Server.Core.Entities
 
         public bool IsActive { get; set; }
 
-        public List<EmployeePosition> positionsList { get; set; }
-
-        public Employee()
-        {
-            this.Code = count++;
-        }
+        public List<EmployeePosition> PositionsList { get; set; }
     }
+      
 }

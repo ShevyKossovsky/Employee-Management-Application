@@ -28,9 +28,9 @@ namespace server.Controllers
 
         // GET <EmployeeController>/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int code)
+        public async Task<IActionResult> Get(int id)
         {
-            var employee = _employeeService.GetByIdAsync(code);
+            var employee = _employeeService.GetByIdAsync(id);
             if (employee is null)
             {
                 return NotFound();
@@ -47,17 +47,17 @@ namespace server.Controllers
         }
         // PUT <EmployeeController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int code, [FromBody] Employee employee)
+        public async Task<ActionResult> Put(int id, [FromBody] Employee employee)
         {
-            return Ok(await _employeeService.UpdateEmployeeAsync(code,employee));
+            return Ok(await _employeeService.UpdateEmployeeAsync(id,employee));
 
         }
 
         // DELETE <EmployeeController>/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int code)
+        public async Task<ActionResult> Delete(int id)
         {
-            await _employeeService.DeleteEmployeeAsync(code);
+            await _employeeService.DeleteEmployeeAsync(id);
             return NoContent();
 
         }

@@ -39,9 +39,9 @@ namespace Solid.Service.Services
             return await _employeeRepository.GetByIdAsync(id);
         }
 
-        public async Task<Employee> UpdateEmployeeAsync(int code, Employee employee)
+        public async Task<Employee> UpdateEmployeeAsync(int id, Employee employee)
         {
-            return await _employeeRepository.UpdateEmployeeAsync(code, employee);
+            return await _employeeRepository.UpdateEmployeeAsync(id, employee);
         }
 
 

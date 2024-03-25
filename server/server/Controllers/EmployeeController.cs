@@ -45,7 +45,7 @@ namespace server.Controllers
         }
         // POST <EmployeeController>
         [HttpPost]
-        public async Task Post([FromBody] EmployeePostModel model)
+        public async Task<IActionResult> Post([FromBody] EmployeePostModel model)
         {
             Employee employeeToAdd = _mapper.Map<Employee>(model);
             employeeToAdd.PositionsList = new List<EmployeePosition>();
@@ -58,24 +58,23 @@ namespace server.Controllers
 
             }
             await _employeeService.AddEmployeeAsync(employeeToAdd);
-
+            return Ok(_mapper.Map<EmployeeDto>(employeeToAdd));
         }
 
         // PUT <EmployeeController>/5
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromBody] EmployeePostModel model)
         {
-            var employee = await _employeeService.GetByIdAsync(id);
-            if (employee is null)
+            Employee e=_mapper.Map<Employee>(model);
+            var updatedEmployee = await _employeeService.UpdateEmployeeAsync(id, e);
+            if (updatedEmployee is null)
             {
-                return NotFound();
+                return NotFound();  
             }
-            _mapper.Map(model, employee);
-            await _employeeService.AddEmployeeAsync(employee);
-            employee = await _employeeService.GetByIdAsync(id);
-            return Ok(_mapper.Map<EmployeeDto>(employee));
 
+            return Ok(_mapper.Map<EmployeeDto>(updatedEmployee));
         }
+
 
         // DELETE <EmployeeController>/5
         [HttpDelete("{id}")]

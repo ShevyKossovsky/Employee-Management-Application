@@ -1,4 +1,6 @@
-using Server.Core;
+using server;
+using server.Mapping;
+using Server.Core.Mapping;
 using Server.Core.Repositories;
 using Server.Core.Services;
 using Server.Data;
@@ -33,7 +35,7 @@ builder.Services.AddScoped<IPositionRepository, PositionRepository>();
 
 builder.Services.AddDbContext<DataContext>();
 
-builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddAutoMapper(typeof(MappingProfile),typeof(PostModelsMappingProfile));
 
 var app = builder.Build();
 

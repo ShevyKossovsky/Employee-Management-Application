@@ -12,8 +12,8 @@ using Server.Data;
 namespace Server.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240320123614_0.0.0")]
-    partial class _000
+    [Migration("20240325164538_migration1")]
+    partial class migration1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -99,8 +99,9 @@ namespace Server.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -110,7 +111,7 @@ namespace Server.Data.Migrations
             modelBuilder.Entity("Server.Core.Entities.EmployeePosition", b =>
                 {
                     b.HasOne("Server.Core.Entities.Employee", null)
-                        .WithMany("positionsList")
+                        .WithMany("PositionsList")
                         .HasForeignKey("EmployeeId");
 
                     b.HasOne("Server.Core.Entities.Position", "Position")
@@ -124,7 +125,7 @@ namespace Server.Data.Migrations
 
             modelBuilder.Entity("Server.Core.Entities.Employee", b =>
                 {
-                    b.Navigation("positionsList");
+                    b.Navigation("PositionsList");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,8 +10,8 @@ namespace Server.Core.Repositories
     public interface IPositionRepository
     {
 
-        Task<List<Position>> GetPositionAsync();
-
+        Task<IEnumerable<Position>> GetPositionAsync();
+        Task<Position> GetPositionByIdAsync(int id);
         Task<Position> AddPositionAsync(Position position);
 
 

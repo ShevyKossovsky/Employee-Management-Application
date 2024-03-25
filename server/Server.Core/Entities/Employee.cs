@@ -29,9 +29,9 @@ namespace Server.Core.Entities
 
         public DateTime DateOfBirth { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; }=true;
 
-        public List<EmployeePosition> PositionsList { get; set; }
+        public List<EmployeePosition>? PositionsList { get; set; }
     }
       
 }

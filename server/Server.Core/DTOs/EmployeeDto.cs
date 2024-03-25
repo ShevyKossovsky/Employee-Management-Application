@@ -15,7 +15,16 @@ namespace Server.Core.DTOs
 
         public string IdNumber { get; set; }
 
+        public string Gender { get; set; }
+
         public DateTime EmploymentStartDate { get; set; }
+
+        public DateTime DateOfBirth { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public List<EmployeePositionDto>? PositionsList { get; set; }
+
 
     }
 }

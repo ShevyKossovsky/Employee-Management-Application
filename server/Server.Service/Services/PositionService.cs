@@ -19,7 +19,13 @@ namespace Server.Service.Services
             _positionRepository = positionRepository;
         }
 
-        public async Task<List<Position>> GetPositionAsync()
+        public async Task<Position> GetPositionByIdAsync(int id)
+
+        {
+            return await _positionRepository.GetPositionByIdAsync(id);
+        }
+
+        public async Task<IEnumerable<Position>> GetPositionAsync()
         {
             return await _positionRepository.GetPositionAsync();
         }
@@ -28,7 +34,6 @@ namespace Server.Service.Services
         {
             return await _positionRepository.AddPositionAsync(position);
         }
-
 
     }
 }

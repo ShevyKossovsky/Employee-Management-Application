@@ -1,4 +1,5 @@
 ﻿using Server.Core.Entities;
+using Server.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,13 @@ namespace Server.Core.Services
 {
     public interface IPositionService
     {
-        Task<List<Position>> GetPositionAsync();
+        Task<IEnumerable<Position>> GetPositionAsync();
+    
+        Task<Position> GetPositionByIdAsync(int id);
 
         Task<Position> AddPositionAsync(Position position);
+
+
 
     }
 }

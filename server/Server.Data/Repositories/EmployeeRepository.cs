@@ -21,12 +21,15 @@ namespace Server.Data.Repositories
 
         public async Task<List<Employee>> GetEmployeeAsync()
         {
-            return await _context.EmployeesList.ToListAsync();
+            return await _context.EmployeesList.Include(e => e.PositionsList).ThenInclude(p=>p.Position).ToListAsync();
         }
 
         public async Task<Employee> GetByIdAsync(int id)
         {
-            return _context.EmployeesList.Find(id);
+            return await _context.EmployeesList
+                                 .Include(e => e.PositionsList)
+                                     .ThenInclude(p => p.Position)
+                                 .FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task<Employee> AddEmployeeAsync(Employee employee)
@@ -39,16 +42,35 @@ namespace Server.Data.Repositories
         public async Task DeleteEmployeeAsync(int id)
         {
             var employee = await _context.EmployeesList.FindAsync(id);
-            employee.IsActive = false;
-            await _context.SaveChangesAsync();
+            if (employee != null)
+            {
+                employee.IsActive = false;
+
+                await _context.SaveChangesAsync();
+            }
         }
-     
+
         public async Task<Employee> UpdateEmployeeAsync(int id, Employee employee)
         {
-            var updateEmployee=_context.EmployeesList.Find(id);
-            updateEmployee = employee;
-            await _context.SaveChangesAsync();
+            var updateEmployee = await _context.EmployeesList.FindAsync(id);
+
+            if (updateEmployee != null)
+            {
+                updateEmployee.FirstName = employee.FirstName;
+                updateEmployee.LastName = employee.LastName;
+                updateEmployee.IdNumber = employee.IdNumber;
+                updateEmployee.Gender = employee.Gender;
+                updateEmployee.EmploymentStartDate = employee.EmploymentStartDate;
+                updateEmployee.DateOfBirth = employee.DateOfBirth;
+                updateEmployee.IsActive = employee.IsActive;
+                updateEmployee.PositionsList = employee.PositionsList;
+
+                await _context.SaveChangesAsync();
+            }
+
             return updateEmployee;
         }
+
+
     }
 }

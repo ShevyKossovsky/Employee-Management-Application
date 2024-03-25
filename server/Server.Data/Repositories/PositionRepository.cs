@@ -19,9 +19,15 @@ namespace Server.Data.Repositories
             _context = context;
         }
 
-        public async Task<List<Position>> GetPositionAsync()
+        public async Task<IEnumerable<Position>> GetPositionAsync()
         {
             return await _context.PositionsList.ToListAsync();
+        }
+
+        public async Task<Position> GetPositionByIdAsync(int id)
+        {
+            return await _context.PositionsList.FirstOrDefaultAsync(p => p.Id == id);
+
         }
 
 

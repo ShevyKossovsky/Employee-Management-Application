@@ -81,7 +81,7 @@ namespace server.Controllers
         public async Task<ActionResult> Delete(int id)
         {
             var employee =await _employeeService.GetByIdAsync(id);
-            if(employee is null)
+            if(employee.IsActive==false)
             { return NotFound(); }
             await _employeeService.DeleteEmployeeAsync(id);
             return NoContent();

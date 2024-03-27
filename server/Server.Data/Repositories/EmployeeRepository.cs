@@ -52,16 +52,14 @@ namespace Server.Data.Repositories
             }
         }
 
-        // בריפוזיטורי
         public async Task<Employee> UpdateEmployeeAsync(int id, Employee employee)
         {
             var updateEmployee = await _context.EmployeesList
-                .Include(e => e.PositionsList) // וידוא שנתוני התפקידים יישארו במקומם
+                .Include(e => e.PositionsList)
                 .FirstOrDefaultAsync(e => e.Id == id);
 
-            if (updateEmployee != null)
+            if (!(updateEmployee == null || updateEmployee.IsActive == false))
             {
-                // עדכון שדות העובד
                 updateEmployee.FirstName = employee.FirstName;
                 updateEmployee.LastName = employee.LastName;
                 updateEmployee.IdNumber = employee.IdNumber;
@@ -70,30 +68,20 @@ namespace Server.Data.Repositories
                 updateEmployee.DateOfBirth = employee.DateOfBirth;
                 updateEmployee.IsActive = employee.IsActive;
 
-                // עדכון רשימת התפקידים
+                // נקה את רשימת התפקידים הקיימת והוסף מחדש
+                updateEmployee.PositionsList.Clear();
+
                 foreach (var newPosition in employee.PositionsList)
                 {
-                    var existingPosition = updateEmployee.PositionsList.FirstOrDefault(p => p.Id == newPosition.Id);
-                    if (existingPosition != null)
+                    var position = await _positionService.GetPositionByIdAsync(newPosition.PositionId);
+                    if (position != null)
                     {
-                        // עדכון התפקיד קיים
-                        existingPosition.PositionId = newPosition.PositionId;
-                        existingPosition.IsManagement = newPosition.IsManagement;
-                        existingPosition.EntryDate = newPosition.EntryDate;
-                    }
-                    else
-                    {
-                        // הוספת תפקיד חדש
-                        var position = await _positionService.GetPositionByIdAsync(newPosition.PositionId);
-                        if (position != null)
+                        updateEmployee.PositionsList.Add(new EmployeePosition
                         {
-                            updateEmployee.PositionsList.Add(new EmployeePosition
-                            {
-                                Position = position,
-                                IsManagement = newPosition.IsManagement,
-                                EntryDate = newPosition.EntryDate
-                            });
-                        }
+                            Position = position,
+                            IsManagement = newPosition.IsManagement,
+                            EntryDate = newPosition.EntryDate
+                        });
                     }
                 }
 
@@ -103,7 +91,6 @@ namespace Server.Data.Repositories
 
             return updateEmployee;
         }
-
 
 
     }

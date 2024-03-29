@@ -7,6 +7,6 @@ export class GlobalService {
 
   constructor() { }
 
-  domainUrl: string = 'https://localhost:7008';
+  domainUrl: string = 'http://localhost:5165';
 
 }

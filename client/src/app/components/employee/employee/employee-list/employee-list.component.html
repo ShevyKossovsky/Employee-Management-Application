@@ -1,6 +1,46 @@
-<p>employee-list works!</p>
+<app-export-to-excel></app-export-to-excel>
 
-<div *ngFor="let e of employeesList">
-    <p>{{e.firstName}} {{e.lastName}}</p>
-   
-</div>
+<table mat-table [dataSource]="employeesList" class="mat-elevation-z8" style="min-width: 60rem;">
+    <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef>
+            <i class="pi pi-user" aria-hidden="true"></i> First name
+        </th>
+        <td mat-cell *matCellDef="let employee">{{ employee.firstName }}</td>
+    </ng-container>
+    <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef>
+            <i class="pi pi-user" aria-hidden="true"></i> Last name
+        </th>
+        <td mat-cell *matCellDef="let employee">{{ employee.lastName }}</td>
+    </ng-container>
+    <ng-container matColumnDef="idNumber">
+        <th mat-header-cell *matHeaderCellDef>
+            <i class="pi pi-id-card" aria-hidden="true"></i> Id number
+        </th>
+        <td mat-cell *matCellDef="let employee">{{ employee.idNumber }}</td>
+    </ng-container>
+    <ng-container matColumnDef="employmentStartDate">
+        <th mat-header-cell *matHeaderCellDef>
+            <i class="pi pi-calendar" aria-hidden="true"></i> Employment Start Date
+        </th>
+        <td mat-cell *matCellDef="let employee">{{ employee.employmentStartDate }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef >Actions</th>
+       
+        <td mat-cell *matCellDef="let employee">
+            <div  class="action-buttons">
+                <button mat-mini-fab aria-label="Delete" color="accent">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-mini-fab aria-label="Edit" color="accent">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </div>
+        </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="['firstName', 'lastName', 'idNumber', 'employmentStartDate', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['firstName', 'lastName', 'idNumber', 'employmentStartDate', 'actions']">
+    </tr>
+</table>

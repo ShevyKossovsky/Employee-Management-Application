@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GlobalService } from '../global.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Employee } from '../../models/employee.model';
 
@@ -15,7 +15,10 @@ export class EmployeeService {
     this.url = `${globalService.domainUrl}/Employee`;
   }
   getAllEmployees(): Observable<Employee[]> {
+    console.log("I am getting all employees");
+    
     return this.http.get<Employee[]>(this.url)
+
   }
   getEmployeeById(id: number): Observable<Employee> {
     return this.http.get<Employee>(`${this.url}/${id}`)

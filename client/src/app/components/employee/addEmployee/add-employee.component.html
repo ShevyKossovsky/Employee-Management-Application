@@ -1,0 +1,67 @@
+<h2 mat-dialog-title>Add Employee</h2>
+<mat-dialog-content>
+  <form [formGroup]="addEmployeeForm" (ngSubmit)="onSubmit()">
+    <!-- First Name -->
+    <mat-form-field>
+      <mat-label>First name</mat-label>
+      <input matInput formControlName="firstName" placeholder="First Name" required>
+      <mat-hint></mat-hint> 
+    </mat-form-field>
+
+
+    <!-- Last Name -->
+    <mat-form-field>
+      <input matInput formControlName="lastName" placeholder="Last Name" required>
+    </mat-form-field>
+
+    <!-- ID Number -->
+    <mat-form-field>
+      <input matInput formControlName="idNumber" placeholder="ID Number" required>
+    </mat-form-field>
+
+    <!-- Gender -->
+    <mat-form-field>
+      <mat-label>Gender</mat-label>
+      <mat-select formControlName="gender" required>
+        <mat-option value="male">Male</mat-option>
+        <mat-option value="female">Female</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Employment Start Date -->
+    <mat-form-field>
+      <input matInput [matDatepicker]="startDatePicker" formControlName="employmentStartDate" placeholder="Employment Start Date" required>
+      <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- Date of Birth -->
+    <mat-form-field>
+      <input matInput [matDatepicker]="birthDatePicker" formControlName="dateOfBirth" placeholder="Date of Birth" required>
+      <mat-datepicker-toggle matSuffix [for]="birthDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #birthDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- Active -->
+    <mat-checkbox formControlName="isActive" color="primary">Active</mat-checkbox>
+
+    <!-- Positions -->
+    <div formArrayName="positionsList">
+      <mat-form-field *ngFor="let control of positionsList.controls; let i = index">
+        <mat-label>Position {{ i + 1 }}</mat-label>
+        <mat-select [formControlName]="i" required>
+          <mat-option *ngFor="let position of positions" [value]="position.id">{{ position.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Add Position Button -->
+    <button mat-button type="button" (click)="addPosition()">Other</button>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button color="warn" (click)="cancel()">Cancel</button>
+  <button mat-button type="submit" [disabled]="addEmployeeForm.invalid">Add</button>
+</mat-dialog-actions>
+

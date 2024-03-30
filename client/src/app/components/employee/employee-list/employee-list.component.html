@@ -1,5 +1,3 @@
-<app-export-to-excel></app-export-to-excel>
-
 <table mat-table [dataSource]="employeesList" class="mat-elevation-z8" style="min-width: 60rem;">
     <ng-container matColumnDef="firstName">
         <th mat-header-cell *matHeaderCellDef>
@@ -26,21 +24,23 @@
         <td mat-cell *matCellDef="let employee">{{ employee.employmentStartDate }}</td>
     </ng-container>
     <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef >Actions</th>
-       
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+
         <td mat-cell *matCellDef="let employee">
-            <div  class="action-buttons">
-                <button mat-mini-fab aria-label="Delete" color="accent">
+            <div class="action-buttons">
+                <button mat-icon-button aria-label="Delete" color="primary" matTooltip="delete employee" (click)="openDeleteDialog(employee.id)">
                     <mat-icon>delete</mat-icon>
                 </button>
-                <button mat-mini-fab aria-label="Edit" color="accent">
+                <button mat-icon-button  aria-label="Edit" color="primary" matTooltip="edit employee details">
                     <mat-icon>edit</mat-icon>
                 </button>
             </div>
         </td>
     </ng-container>
-    
+  
     <tr mat-header-row *matHeaderRowDef="['firstName', 'lastName', 'idNumber', 'employmentStartDate', 'actions']"></tr>
     <tr mat-row *matRowDef="let row; columns: ['firstName', 'lastName', 'idNumber', 'employmentStartDate', 'actions']">
     </tr>
 </table>
+
+

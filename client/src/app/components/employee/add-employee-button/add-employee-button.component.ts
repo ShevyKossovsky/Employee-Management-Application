@@ -13,7 +13,7 @@ export class AddEmployeeButtonComponent {
 
   openDialog(): void {
     this.dialog.open(AddEmployeeComponent, {
-      width: '400px',
+      width: '500px',
     });
   }
 }

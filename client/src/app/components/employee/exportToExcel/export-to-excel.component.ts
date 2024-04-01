@@ -1,7 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import * as XLSX from 'xlsx';
+import { forkJoin } from 'rxjs';
 import { EmployeeService } from '../../../services/employee/employee.service';
 import { Employee } from '../../../models/employee.model';
+import { PositionService } from '../../../services/positions/position.service';
+import { Position } from '../../../models/position.model';
+
 @Component({
   selector: 'app-export-to-excel',
   templateUrl: './export-to-excel.component.html',
@@ -10,17 +14,35 @@ import { Employee } from '../../../models/employee.model';
 })
 export class ExportToExcelComponent implements OnInit {
 
-  employeesList!: Employee[];
+  employeesList: Employee[] = [];
+  positionsMap: Map<number, string> = new Map<number, string>(); // Map to store positions
 
-  constructor(private _employeeService: EmployeeService) { }
+  constructor(
+    private _employeeService: EmployeeService,
+    private _positionService: PositionService
+  ) { }
 
   ngOnInit(): void {
-    this._employeeService.getAllEmployees().subscribe(employees => {
-      //Filtering deleted employees
-      this.employeesList = employees;
-      console.log(this.employeesList);
-    }); 
+    this.fetchDataForExcel();
   }
+
+  fetchDataForExcel(): void {
+    forkJoin({
+      employees: this._employeeService.getAllEmployees(),
+      positions: this._positionService.getAllPositions()
+    }).subscribe(({ employees, positions }) => {
+      // Filtering deleted employees
+      this.employeesList = employees;
+
+      // Populate positions map with position IDs and names
+      positions.forEach((position: Position) => {
+        this.positionsMap.set(position.id, position.name);
+      });
+
+     
+    });
+  }
+  
   exportToExcel(): void {
     // Create a new array to hold the data for each row in the Excel sheet
     const excelData: any[] = [];
@@ -33,7 +55,10 @@ export class ExportToExcelComponent implements OnInit {
       // Iterate over each position of the employee
       positionsList.forEach(position => {
         // Extract position details
-        const { position: { name }, isManagement, entryDate } = position;
+        const { positionId, isManagement, entryDate } = position;
+  
+        // Get position name from positionsMap
+        const positionName = this.positionsMap.get(positionId) || 'Unknown';
   
         // Format dates
         const formattedEmploymentStartDate = new Date(employmentStartDate).toLocaleDateString().replace(/\./g, '/');
@@ -48,7 +73,7 @@ export class ExportToExcelComponent implements OnInit {
           'Gender': gender,
           'Employment Start Date': formattedEmploymentStartDate,
           'Date of Birth': formattedDateOfBirth,
-          'Position': name,
+          'Position': positionName,
           'isManagement': isManagement,
           'Entry Date': formattedEntryDate
         };
@@ -72,6 +97,4 @@ export class ExportToExcelComponent implements OnInit {
     const dateString = today.toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
     XLSX.writeFile(wb, `Employees_in_${dateString}.xlsx`);
   }
-  
-  
 }

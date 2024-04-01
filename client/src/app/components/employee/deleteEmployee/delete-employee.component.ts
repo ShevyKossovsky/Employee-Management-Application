@@ -45,7 +45,8 @@ export class DeleteEmployeeComponent {
 
   openSnackBar() {
     const snackBarRef = this._snackBar.open('Employee deleted successfully', undefined, {
-      duration: 2000, // Duration of the SnackBar display in milliseconds
+      duration: 2000,
+      panelClass: ['custom-snackbar']
     });
     snackBarRef.afterDismissed().subscribe(() => {
       window.location.reload();

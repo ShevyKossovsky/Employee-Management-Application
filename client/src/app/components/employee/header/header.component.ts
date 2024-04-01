@@ -7,16 +7,6 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   
-  isHebrew: boolean = false;
 
-  toggleLanguage(): void {
-    if (this.isHebrew) {
-      // עברית -> אנגלית
-      document.documentElement.lang = 'en';
-    } else {
-      // אנגלית -> עברית
-      document.documentElement.lang = 'he';
-    }
-  }
   
 }

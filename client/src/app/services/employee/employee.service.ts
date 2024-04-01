@@ -3,6 +3,7 @@ import { GlobalService } from '../global.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Employee } from '../../models/employee.model';
+import { EmployeePost } from '../../models/employeePost.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,8 @@ export class EmployeeService {
   getEmployeeById(id: number): Observable<Employee> {
     return this.http.get<Employee>(`${this.url}/${id}`)
   }
-  addEmployee(employee: Employee): Observable<Employee[]> {
-    return this.http.post<Employee[]>(this.url, employee)
+  addEmployee(employee: EmployeePost): Observable<EmployeePost[]> {
+    return this.http.post<EmployeePost[]>(this.url, employee)
   }
 
   updateEmployee(id:number,employee: Employee): Observable<Employee> {

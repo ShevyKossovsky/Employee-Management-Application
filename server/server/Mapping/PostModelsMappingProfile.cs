@@ -9,8 +9,9 @@ namespace server.Mapping
         public PostModelsMappingProfile()
         {
 
-            CreateMap<EmployeePostModel, Employee>();
-         
+            CreateMap<EmployeePostModel, Employee>()
+            .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => Enum.Parse<Gender>(src.Gender, true)));
+
             CreateMap<EmployeePositionPostModel, EmployeePosition>();
 
             CreateMap<PositionPostModel, Position>();

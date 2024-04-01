@@ -1,8 +1,7 @@
 import { Position } from "./position.model";
 
 export class EmployeePosition {
-    id!: number;
-    position!: Position;
+    positionId!: number;
     isManagement!: boolean;
     entryDate!: Date;
   }

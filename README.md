@@ -33,5 +33,9 @@ The application utilizes various external libraries, including Angular Material,
 ## Usage
 
 1. Clone the repository to your local machine:
-   ```bash
-   git clone https://github.com/your-username/employee-management.git
+
+   ```
+   bash
+   git clone https://github.com/ShevyKossovsky/Practicum.git
+   
+   ```

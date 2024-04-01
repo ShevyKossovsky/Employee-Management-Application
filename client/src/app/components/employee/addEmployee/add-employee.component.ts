@@ -1,93 +1,108 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators, FormArray, AbstractControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { EmployeeService } from '../../../services/employee/employee.service';
 import { PositionService } from '../../../services/positions/position.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Position } from '../../../models/position.model';
+import { EGender, Employee } from '../../../models/employee.model';
+import { EmployeePost } from '../../../models/employeePost.model';
 
 @Component({
   selector: 'app-add-employee',
   templateUrl: './add-employee.component.html',
-  styleUrls: ['./add-employee.component.scss'],
+  styleUrls: ['./add-employee.component.scss']
 })
 export class AddEmployeeComponent {
-  addEmployeeForm!: FormGroup;
-  positions: Position[] = [];
+  employeeForm!: FormGroup;
+  positionsList: Position[] = [];
 
   constructor(
-    private formBuilder: FormBuilder,
+    private fb: FormBuilder,
     private dialogRef: MatDialogRef<AddEmployeeComponent>,
     private employeeService: EmployeeService,
     private positionService: PositionService,
-    private snackBar: MatSnackBar
-  ) {}
+    private _snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     this.initializeForm();
     this.loadPositions();
   }
 
+
+
+
   initializeForm(): void {
-    this.addEmployeeForm = this.formBuilder.group({
+    this.employeeForm = this.fb.group({
+      idNumber: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      idNumber: ['', Validators.required],
-      gender: ['', Validators.required],
-      employmentStartDate: ['', Validators.required],
+      gender: ['', Validators.required], 
       dateOfBirth: ['', Validators.required],
-      isActive: [true, Validators.required],
-      positionsList: this.formBuilder.array([])
+      employmentStartDate: ['', Validators.required],
+      positionsList: this.fb.array([], Validators.required)
     });
+  }
+
+
+
+  get positionsFormArray(): FormArray {
+    return this.employeeForm.get('positionsList') as FormArray;
   }
 
   loadPositions(): void {
-    this.positionService.getAllPositions().subscribe(
-      positions => {
-        this.positions = positions;
-      },
-      error => {
-        console.error('Error loading positions:', error);
-      }
-    );
-  }
-
-  createPositionFormGroup(): FormGroup {
-    return this.formBuilder.group({
-      position: ['', Validators.required],
-      entryDate: ['', Validators.required],
-      isManagement: [false, Validators.required],
+    this.positionService.getAllPositions().subscribe(positions => {
+      this.positionsList = positions;
+      this.addPositionControl();
     });
   }
 
-  addPosition(): void {
-    const positionsList = this.addEmployeeForm.get('positionsList') as FormArray;
-    positionsList.push(this.createPositionFormGroup());
+  addPositionControl(): void {
+    this.positionsFormArray.push(this.fb.group({
+      positionId: ['', Validators.required],
+      isManagement: [false, Validators.required],
+      entryDate: ['', Validators.required]
+    }));
   }
 
-  onSubmit(): void {
-    if (this.addEmployeeForm.invalid) {
-      return;
-    }
+  removePositionControl(index: number): void {
+    this.positionsFormArray.removeAt(index);
+  }
 
-    const formData = this.addEmployeeForm.value;
-    this.employeeService.addEmployee(formData).subscribe(
-      () => {
-        this.snackBar.open('Employee added successfully', undefined, { duration: 2000 });
-        this.dialogRef.close();
-      },
-      error => {
+  isPositionDisabled(positionId: number, index: number): boolean {
+    const selectedPositions = this.employeeForm.value.positionsList.map((pos: any) => pos.positionId);
+    return selectedPositions.includes(positionId) && selectedPositions.indexOf(positionId) !== index;
+  }
+  
+  submit(): void {
+    if (this.employeeForm.valid) {
+      const formData = this.employeeForm.value;
+      this.employeeService.addEmployee(formData).subscribe(() => {
+        this.openSnackBar();
+        this.dialogRef.close(); // Handle success, e.g., close dialog
+             }, error => {
         console.error('Error adding employee:', error);
-        this.snackBar.open('Error adding employee', undefined, { duration: 2000 });
-      }
-    );
+        // Display server validation errors
+        console.log('Server validation errors:', error.error.errors);
+      });
+    } else {
+      this.employeeForm.markAllAsTouched();
+      console.error('Form is not valid');
+    }
   }
 
   cancel(): void {
     this.dialogRef.close();
   }
 
-  isControlsArray(abstractControl: AbstractControl | null): boolean {
-    return !!abstractControl && Array.isArray((abstractControl as unknown as { controls: any }).controls);
+  openSnackBar() {
+    const snackBarRef = this._snackBar.open('Employee added successfully', undefined, {
+      duration: 2000,
+      panelClass: ['custom-snackbar']
+    });
+    snackBarRef.afterDismissed().subscribe(() => {
+      window.location.reload();
+    });
   }
 }

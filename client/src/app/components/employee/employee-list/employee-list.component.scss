@@ -1,3 +1,29 @@
-.action-buttons button {
-    margin-right: 15px; /* יציב את הכפתור השני ביחס לראשון */
-}
+.table-container {
+    width: 60%; 
+    overflow: auto; 
+    margin: auto;
+
+  }
+table {
+    padding-top: 30px;
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+  .actions-cell {
+    white-space: nowrap; 
+  }
+  
+  .actions-cell div {
+    display: flex;
+    align-items: center;
+  }
+  
+  

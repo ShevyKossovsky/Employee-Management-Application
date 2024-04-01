@@ -18,9 +18,14 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { EmployeeScreenComponent } from './employee-screen/employee-screen.component';
-import { AddEmployeeComponent } from './addEmployee/add-employee.component';
 import { AddEmployeeButtonComponent } from './add-employee-button/add-employee-button.component';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { HeaderComponent } from './header/header.component';
+import { AddEmployeeComponent } from './addEmployee/add-employee.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
     declarations: [
@@ -29,8 +34,10 @@ import { AddEmployeeButtonComponent } from './add-employee-button/add-employee-b
         DeleteEmployeeComponent,
         EmployeeScreenComponent,
         EmployeeListComponent,
-        AddEmployeeComponent,
-        AddEmployeeButtonComponent
+        AddEmployeeButtonComponent,
+        HeaderComponent,
+        AddEmployeeComponent
+        
     ],
     imports: [
 
@@ -46,15 +53,20 @@ import { AddEmployeeButtonComponent } from './add-employee-button/add-employee-b
         MatSnackBarModule,
         FormsModule,
         ReactiveFormsModule,
-        MatIconModule,
         MatCheckboxModule,
         MatSelectModule,
         MatDatepickerModule,
         MatNativeDateModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule ,
+        MatPaginatorModule,
+        MatSlideToggleModule
 
     ],
     providers: [
         { provide: MatDialogRef, useValue: {} }
-      ]
+    ]
 })
 export class EmployeeModule { }

@@ -24,15 +24,21 @@ namespace Server.Data.Repositories
 
         public async Task<List<Employee>> GetEmployeeAsync()
         {
-            return await _context.EmployeesList.Include(e => e.PositionsList).ThenInclude(p => p.Position).ToListAsync();
+            return await _context.EmployeesList
+                                 .Include(e => e.PositionsList)
+                                     .ThenInclude(p => p.Position)
+                                 .Where(e => e.IsActive)
+                                 .ToListAsync();
         }
 
         public async Task<Employee> GetByIdAsync(int id)
         {
             return await _context.EmployeesList
                                  .Include(e => e.PositionsList)
-                                     .ThenInclude(p => p.Position).FirstOrDefaultAsync(e => e.Id == id);
+                                     .ThenInclude(p => p.Position)
+                                 .FirstOrDefaultAsync(e => e.Id == id && e.IsActive);
         }
+
 
         public async Task<Employee> AddEmployeeAsync(Employee employee)
         {

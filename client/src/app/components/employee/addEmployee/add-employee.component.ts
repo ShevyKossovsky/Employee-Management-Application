@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, AbstractControl } from '@angular/forms';
 import { EmployeeService } from '../../../services/employee/employee.service';
 import { PositionService } from '../../../services/positions/position.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,7 +14,6 @@ import { Position } from '../../../models/position.model';
 export class AddEmployeeComponent {
   addEmployeeForm!: FormGroup;
   positions: Position[] = [];
-  positionsList!: FormArray;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,7 +37,7 @@ export class AddEmployeeComponent {
       employmentStartDate: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
       isActive: [true, Validators.required],
-      positionsList: this.formBuilder.array([this.createPositionFormGroup()])
+      positionsList: this.formBuilder.array([])
     });
   }
 
@@ -86,5 +85,9 @@ export class AddEmployeeComponent {
 
   cancel(): void {
     this.dialogRef.close();
+  }
+
+  isControlsArray(abstractControl: AbstractControl | null): boolean {
+    return !!abstractControl && Array.isArray((abstractControl as unknown as { controls: any }).controls);
   }
 }

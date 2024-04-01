@@ -1,0 +1,12 @@
+.spacer {
+  flex: 1;
+}
+
+.toolbar-row {
+  justify-content: space-between;
+  height: 100px;
+}
+
+.toolbar-button {
+  margin-right: 10px; /* כאן אתה יכול להגדיר את הרווח בין הכפתורים */
+}

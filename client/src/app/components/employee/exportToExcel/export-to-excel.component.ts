@@ -17,7 +17,7 @@ export class ExportToExcelComponent implements OnInit {
   ngOnInit(): void {
     this._employeeService.getAllEmployees().subscribe(employees => {
       //Filtering deleted employees
-      this.employeesList = employees.filter(employee => employee.isActive);
+      this.employeesList = employees;
       console.log(this.employeesList);
     }); 
   }
@@ -35,17 +35,22 @@ export class ExportToExcelComponent implements OnInit {
         // Extract position details
         const { position: { name }, isManagement, entryDate } = position;
   
+        // Format dates
+        const formattedEmploymentStartDate = new Date(employmentStartDate).toLocaleDateString().replace(/\./g, '/');
+        const formattedDateOfBirth = new Date(dateOfBirth).toLocaleDateString().replace(/\./g, '/');
+        const formattedEntryDate = new Date(entryDate).toLocaleDateString().replace(/\./g, '/');
+  
         // Create a new row object with employee details, position name, isManagement, and entryDate
         const row = {
           'ID Number': idNumber,
           'First Name': firstName,
           'Last Name': lastName,
           'Gender': gender,
-          'Employment Start Date': employmentStartDate,
-          'Date of Birth': dateOfBirth,
+          'Employment Start Date': formattedEmploymentStartDate,
+          'Date of Birth': formattedDateOfBirth,
           'Position': name,
           'isManagement': isManagement,
-          'Entry Date': entryDate
+          'Entry Date': formattedEntryDate
         };
   
         // Add the row to the excelData array
@@ -67,7 +72,6 @@ export class ExportToExcelComponent implements OnInit {
     const dateString = today.toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
     XLSX.writeFile(wb, `Employees_in_${dateString}.xlsx`);
   }
-  
   
   
 }

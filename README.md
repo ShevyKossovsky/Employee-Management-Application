@@ -35,7 +35,6 @@ The application utilizes various external libraries, including Angular Material,
 1. Clone the repository to your local machine:
 
    ```
-   bash
    git clone https://github.com/ShevyKossovsky/Practicum.git
    
    ```

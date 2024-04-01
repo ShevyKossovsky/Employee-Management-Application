@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { EmployeeService } from '../../../services/employee/employee.service';
+import { Employee } from '../../../models/employee.model';
 
 @Component({
   selector: 'app-delete-employee',
@@ -11,7 +12,7 @@ import { EmployeeService } from '../../../services/employee/employee.service';
 export class DeleteEmployeeComponent {
   constructor(
     public dialogRef: MatDialogRef<DeleteEmployeeComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { employeeId: number },
+    @Inject(MAT_DIALOG_DATA) public data: { employee: Employee },
     private _employeeService: EmployeeService,
     private _snackBar: MatSnackBar
   ) { }
@@ -22,8 +23,8 @@ export class DeleteEmployeeComponent {
   }
 
   confirmDelete(): void {
-    if (this.data.employeeId) {
-      this._employeeService.deleteEmployee(this.data.employeeId).subscribe(
+    if (this.data.employee) {
+      this._employeeService.deleteEmployee(this.data.employee.id).subscribe(
         response => {
 
           console.log('Employee deleted successfully:', response);

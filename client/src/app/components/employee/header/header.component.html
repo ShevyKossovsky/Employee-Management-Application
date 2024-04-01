@@ -2,9 +2,6 @@
   <mat-toolbar>
     <mat-toolbar-row class="toolbar-row">
       <h1>Employee Management</h1>
-      <mat-slide-toggle [(ngModel)]="isHebrew" (change)="toggleLanguage()" color="warn">
-        {{ isHebrew ? 'עברית' : 'English' }}
-      </mat-slide-toggle>
       
       <div class="spacer"></div>
       <app-add-employee-button class="toolbar-button" ></app-add-employee-button>

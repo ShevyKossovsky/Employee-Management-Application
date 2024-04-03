@@ -57,3 +57,6 @@ http://localhost:4200/
 
 ## License
 © 2024 Shevy Kossovsky All rights reserved.
+
+### contact
+0556773361 s0556773361@gmail.com

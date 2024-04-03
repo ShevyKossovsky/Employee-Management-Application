@@ -8,8 +8,8 @@ This is an employee management application built using Angular for the frontend 
 
 The application utilizes various external libraries, including Angular Material  to enhance its user interface and provide a visually appealing experience.
 
-## Features
 
+## Features
 
 - **Employee Management**: Users can add new employees, edit existing employee details, and delete employees as needed. Each employee can include personal information, positions, and employment details.
 
@@ -28,7 +28,6 @@ The application utilizes various external libraries, including Angular Material 
 
 ## Usage
 
-<<<<<<< HEAD
 1. Clone the repository to your local machine:
 
    ```
@@ -36,7 +35,6 @@ The application utilizes various external libraries, including Angular Material 
    git clone https://github.com/ShevyKossovsky/Practicum.git
    
    ```
-=======
 1. Clone the repository to your local machine.
 ```
 git clone https://github.com/ShevyKossovsky/Practicum.git
@@ -58,7 +56,5 @@ ng s -o
 http://localhost:4200/
 ```   
 
-
-   ## License
+## License
 © 2024 Shevy Kossovsky All rights reserved.
->>>>>>> 1eb720fdd6f4d09279fa2ea1dfd28a33aeaaf8cf

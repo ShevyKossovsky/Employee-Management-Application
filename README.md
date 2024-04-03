@@ -9,14 +9,6 @@ This is an employee management application built using Angular for the frontend 
 The application utilizes various external libraries, including Angular Material  to enhance its user interface and provide a visually appealing experience.
 
 
-## Features
-
-- **Employee Management**: Users can add new employees, edit existing employee details, and delete employees as needed. Each employee can include personal information, positions, and employment details.
-
-- **Personalized User Area**: Registered users have access to a personalized user area where they can manage their profile, preferences, and saved employee data.
-
-- **Responsive Design**: The application is designed to be responsive, ensuring a seamless user experience across different devices and screen sizes.
-
 ## Technologies Used
 
 - **Frontend**: Angular
@@ -41,13 +33,15 @@ git clone https://github.com/ShevyKossovsky/Practicum.git
 
 ```
 npm install
+
 ```
 5. Run the frontend server.
 
 ```
 ng s -o
 
-```     
+```    
+
 ### Local Database Setup
 
 To set up the local database, follow these steps:
@@ -57,6 +51,7 @@ To set up the local database, follow these steps:
 -Run the following commands:
 
 ```
+
 Add-Migration MigrationName
 
 Update-Database

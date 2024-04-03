@@ -65,7 +65,7 @@
                 <div [formGroupName]="i" class="position-container">
                     <mat-form-field appearance="fill" class="position-field">
                         <mat-label>Position</mat-label>
-                        <mat-select formControlName="positionId" placeholder="Select Position" class="position-select">
+                        <mat-select formControlName="positionId" placeholder="Select Position" class="position-select" >
                             <mat-option *ngFor="let pos of positions" [value]="pos.id"
                                 [disabled]="isPositionDisabled(pos.id, i)">
                                 {{ pos.name }}

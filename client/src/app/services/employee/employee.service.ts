@@ -12,7 +12,7 @@ export class EmployeeService {
 
   url!: string;
   constructor(private http: HttpClient, private globalService: GlobalService) {
-    this.url = `${globalService.domainUrl}/Employee`;
+    this.url = `${globalService.domainUrl}/Employees`;
   }
   getAllEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.url)

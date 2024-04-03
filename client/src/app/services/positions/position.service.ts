@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class PositionService {
   url!: string;
   constructor(private http: HttpClient, private globalService: GlobalService) {
-    this.url = `${globalService.domainUrl}/Position`;
+    this.url = `${globalService.domainUrl}/Positions`;
   }
   getAllPositions(): Observable<Position[]> {
     return this.http.get<Position[]>(this.url)

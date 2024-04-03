@@ -8,6 +8,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { EditEmployeeComponent } from '../edit-employee/edit-employee.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
 
 @Component({
   selector: 'app-employee-list',
@@ -72,4 +73,15 @@ export class EmployeeListComponent implements AfterViewInit {
       }
     });
   }
+
+
+  viewEmployeeDetails(employee: Employee): void {
+    const dialogRef = this.dialog.open(EmployeeDetailsComponent, {
+      data: { employee },
+      width:'500px'
+    });  
+    
+  }
+
+    
 }

@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmployeeRoutingModule } from './employee-routing.module';
-import { TableModule } from 'primeng/table';
-import { ButtonModule } from 'primeng/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
@@ -28,6 +26,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
     declarations: [
@@ -39,16 +40,16 @@ import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansi
         AddEmployeeButtonComponent,
         HeaderComponent,
         AddEmployeeComponent,
-        EditEmployeeComponent
+        EditEmployeeComponent,
+        EmployeeDetailsComponent
         
     ],
     imports: [
 
         CommonModule,
         EmployeeRoutingModule,
-        TableModule,
-        ButtonModule,
         MatIconModule,
+        MatIconButton,
         MatButtonModule,
         MatTableModule,
         MatTooltipModule,
@@ -67,6 +68,8 @@ import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansi
         MatPaginatorModule,
         MatSlideToggleModule,
         MatExpansionModule,
+        MatCardModule ,
+        MatDividerModule 
 
     ],
     providers: [

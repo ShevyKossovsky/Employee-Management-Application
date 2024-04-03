@@ -5,13 +5,13 @@ export class Employee {
     firstName!: string;
     lastName!: string;
     idNumber!: string;
-    gender!: EGender;
+    gender!: string;
     employmentStartDate!: Date;
     dateOfBirth!: Date;
     positionsList!: EmployeePosition[];
 }
-export enum EGender
-{
-    Male ,
-    Female
-}
+// export enum EGender
+// {
+//     Male ,
+//     Female
+// }

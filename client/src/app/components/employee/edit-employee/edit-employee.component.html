@@ -24,17 +24,14 @@
 
 
         <!-- Gender -->
-        <mat-form-field appearance="fill">
+        <mat-form-field>
             <mat-label>Gender</mat-label>
-           
-                <mat-select formControlName="gender" placeholder="Select Gender" [value]="data.employee.gender">
-                    <mat-option value="male">Male</mat-option>
-                    <mat-option value="female">Female</mat-option>
-                </mat-select>
-
+            <mat-select formControlName="gender" placeholder="Select Gender">
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+            </mat-select>
             <mat-error *ngIf="employeeForm.get('gender').hasError('required')">Gender is required</mat-error>
         </mat-form-field>
-        
 
         <!-- Date of Birth -->
         <mat-form-field appearance="fill">
@@ -69,8 +66,9 @@
                     <mat-form-field appearance="fill" class="position-field">
                         <mat-label>Position</mat-label>
                         <mat-select formControlName="positionId" placeholder="Select Position" class="position-select">
-                            <mat-option *ngFor="let pos of positionsList" [value]="pos.id"
-                                [disabled]="isPositionDisabled(pos.id, i)">{{ pos.name }}
+                            <mat-option *ngFor="let pos of positions" [value]="pos.id"
+                                [disabled]="isPositionDisabled(pos.id, i)">
+                                {{ pos.name }}
                             </mat-option>
                         </mat-select>
                         <mat-error
@@ -101,6 +99,7 @@
                 </div>
             </mat-expansion-panel>
         </div>
+
         <button mat-icon-button color="primary" (click)="addPositionControl()" class="position-add-button"
             matTooltip="Add position">
             <mat-icon>add</mat-icon>

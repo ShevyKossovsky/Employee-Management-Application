@@ -7,7 +7,6 @@ import { EmployeeScreenComponent } from './employee-screen/employee-screen.compo
 const EMPLOYEE_ROUTER: Route[] = [
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: '', component: EmployeeScreenComponent }, 
-
 ];
 
 

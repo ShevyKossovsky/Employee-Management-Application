@@ -1,13 +1,12 @@
 .table-container {
   padding-top: 20px;
-    width: 60%; 
     overflow: auto; 
     margin: auto;
 
   }
 table {
     padding-top: 30px;
-    width: 100%;
+    width: 80%;
   }
   
   .mat-mdc-form-field {
@@ -33,3 +32,6 @@ table {
     align-items: center;
     height: 100vh; /* גובה מלא של העמוד */ 
   }
+.actions{
+  text-align: center;
+}

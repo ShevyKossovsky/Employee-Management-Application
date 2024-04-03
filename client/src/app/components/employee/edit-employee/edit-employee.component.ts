@@ -1,3 +1,4 @@
+
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,7 +15,7 @@ import { PositionService } from '../../../services/positions/position.service';
 })
 export class EditEmployeeComponent {
   employeeForm: FormGroup;
-  positionsList: Position[] = [];
+  positions: Position[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -37,16 +38,20 @@ export class EditEmployeeComponent {
       idNumber: [this.data.employee.idNumber, [Validators.required, Validators.pattern(/^\d{9}$/)]],
       firstName: [this.data.employee.firstName, Validators.required],
       lastName: [this.data.employee.lastName, Validators.required],
-      gender: [this.data.employee.gender || 'male', Validators.required],
+      gender: [this.data.employee.gender, Validators.required],
       dateOfBirth: [this.data.employee.dateOfBirth, Validators.required],
       employmentStartDate: [this.data.employee.employmentStartDate, Validators.required],
       positionsList: this.fb.array([], Validators.required)
+    });
+
+    this.data.employee.positionsList.forEach(position => {
+      this.addPositionControl(position);
     });
   }
 
   setEmployeeData(): void {
     const employeeData = this.data.employee;
-    this.employeeForm.setControl('positionsList', this.fb.array([])); // Clear existing positions
+    this.employeeForm.setControl('positionsList', this.fb.array([]));
     employeeData.positionsList.forEach(position => {
       this.addPositionControl(position);
     });
@@ -58,7 +63,7 @@ export class EditEmployeeComponent {
 
   loadPositions(): void {
     this.positionService.getAllPositions().subscribe(positions => {
-      this.positionsList = positions;
+      this.positions = positions;
     });
   }
 
@@ -94,7 +99,7 @@ export class EditEmployeeComponent {
       this.employeeService.updateEmployee(formData.id, formData).subscribe(
         () => {
           this.openSnackBar('Employee edited successfully');
-          this.dialogRef.close(true); // Handle success, e.g., close dialog
+          this.dialogRef.close(true);
         },
         error => {
           console.error('Error editing employee:', error);
@@ -111,7 +116,6 @@ export class EditEmployeeComponent {
       this.openSnackBar('Form is not valid. Please fill all required fields.');
     }
   }
-
 
   openSnackBar(message: string): void {
     this._snackBar.open(message, 'Close', {

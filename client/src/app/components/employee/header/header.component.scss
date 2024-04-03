@@ -8,5 +8,10 @@
 }
 
 .toolbar-button {
-  margin-right: 10px; /* כאן אתה יכול להגדיר את הרווח בין הכפתורים */
+  margin-right: 10px;
+  /* כאן אתה יכול להגדיר את הרווח בין הכפתורים */
+}
+
+mat-toolbar {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.426);
 }

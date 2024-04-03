@@ -1,11 +1,10 @@
-
-  <mat-toolbar>
-    <mat-toolbar-row class="toolbar-row">
-      <h1>Employee Management</h1>
-      
-      <div class="spacer"></div>
-      <app-add-employee-button class="toolbar-button" ></app-add-employee-button>
-      <app-export-to-excel class="toolbar-button"></app-export-to-excel>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="toolbar-row">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Employee Management</h1>
+    <div class="spacer"></div>
+    <app-export-to-excel class="toolbar-button"></app-export-to-excel>
+  </mat-toolbar-row>
+</mat-toolbar>

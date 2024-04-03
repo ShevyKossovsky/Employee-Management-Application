@@ -55,26 +55,39 @@ namespace server.Controllers
                 EmployeePosition employeePosition = _mapper.Map<EmployeePosition>(p);
                 employeePosition.Position = position;
                 employeeToAdd.PositionsList.Add(employeePosition);
-
             }
-            await _employeeService.AddEmployeeAsync(employeeToAdd);
-            return Ok(_mapper.Map<EmployeeDto>(employeeToAdd));
+
+            try
+            {
+                await _employeeService.AddEmployeeAsync(employeeToAdd);
+                return Ok(_mapper.Map<EmployeeDto>(employeeToAdd));
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // PUT <EmployeeController>/5
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromBody] EmployeePostModel model)
         {
-            Employee e=_mapper.Map<Employee>(model);
-            var updatedEmployee = await _employeeService.UpdateEmployeeAsync(id, e);
-            if (updatedEmployee is null)
+            try
             {
-                return NotFound();  
+                Employee e = _mapper.Map<Employee>(model);
+                var updatedEmployee = await _employeeService.UpdateEmployeeAsync(id, e);
+                if (updatedEmployee == null)
+                {
+                    return BadRequest("employee canot be found");
+                }
+
+                return Ok(_mapper.Map<EmployeeDto>(updatedEmployee));
             }
-
-            return Ok(_mapper.Map<EmployeeDto>(updatedEmployee));
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
-
 
         // DELETE <EmployeeController>/5
         [HttpDelete("{id}")]

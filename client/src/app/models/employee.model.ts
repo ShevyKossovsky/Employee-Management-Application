@@ -5,7 +5,7 @@ export class Employee {
     firstName!: string;
     lastName!: string;
     idNumber!: string;
-    gender!: number;
+    gender!: EGender;
     employmentStartDate!: Date;
     dateOfBirth!: Date;
     positionsList!: EmployeePosition[];

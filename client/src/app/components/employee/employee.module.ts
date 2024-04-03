@@ -26,6 +26,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
 
 @NgModule({
     declarations: [
@@ -36,7 +38,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
         EmployeeListComponent,
         AddEmployeeButtonComponent,
         HeaderComponent,
-        AddEmployeeComponent
+        AddEmployeeComponent,
+        EditEmployeeComponent
         
     ],
     imports: [
@@ -62,7 +65,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
         MatFormFieldModule,
         MatInputModule ,
         MatPaginatorModule,
-        MatSlideToggleModule
+        MatSlideToggleModule,
+        MatExpansionModule,
 
     ],
     providers: [

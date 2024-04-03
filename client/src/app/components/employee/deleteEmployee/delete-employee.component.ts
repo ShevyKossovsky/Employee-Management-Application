@@ -23,13 +23,13 @@ export class DeleteEmployeeComponent {
   }
 
   confirmDelete(): void {
+    this.dialogRef.close(true)
     if (this.data.employee) {
       this._employeeService.deleteEmployee(this.data.employee.id).subscribe(
         response => {
 
           console.log('Employee deleted successfully:', response);
           this.openSnackBar();
-          this.dialogRef.close();
 
         },
         error => {
@@ -37,9 +37,6 @@ export class DeleteEmployeeComponent {
           this.dialogRef.close();
         }
       );
-    } else {
-      console.error('No employee ID provided for deletion');
-      this.dialogRef.close();
     }
   }
 
@@ -48,8 +45,6 @@ export class DeleteEmployeeComponent {
       duration: 2000,
       panelClass: ['custom-snackbar']
     });
-    snackBarRef.afterDismissed().subscribe(() => {
-      window.location.reload();
-    });
+  
   }
 }

@@ -18,6 +18,8 @@ export class PositionService {
   getPositionById(id: number): Observable<Position> {
     return this.http.get<Position>(`${this.url}/${id}`)
   }
+
+
   addPosition(position: Position): Observable<Position[]> {
     return this.http.post<Position[]>(this.url, position)
   }

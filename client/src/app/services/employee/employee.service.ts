@@ -3,7 +3,6 @@ import { GlobalService } from '../global.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Employee } from '../../models/employee.model';
-import { EmployeePost } from '../../models/employeePost.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,21 +15,18 @@ export class EmployeeService {
     this.url = `${globalService.domainUrl}/Employee`;
   }
   getAllEmployees(): Observable<Employee[]> {
-    console.log("I am getting all employees");
-    
     return this.http.get<Employee[]>(this.url)
-
   }
   getEmployeeById(id: number): Observable<Employee> {
     return this.http.get<Employee>(`${this.url}/${id}`)
   }
-  addEmployee(employee: EmployeePost): Observable<EmployeePost[]> {
-    return this.http.post<EmployeePost[]>(this.url, employee)
+  addEmployee(employee: Employee): Observable<Employee[]> {
+    return this.http.post<Employee[]>(this.url, employee)
   }
 
-  updateEmployee(id:number,employee: Employee): Observable<Employee> {
+  updateEmployee(id: number, employee: Employee): Observable<Employee> {
 
-     return this.http.put<Employee>(`${this.url}${id}`, employee)
+    return this.http.put<Employee>(`${this.url}/${id}`, employee)
   }
 
   deleteEmployee(id: number): Observable<Employee> {

@@ -1,10 +1,12 @@
-<div class="add-employee-container">
+<div class="form-container">
     <h2>Add New Employee</h2>
     <form [formGroup]="employeeForm" (ngSubmit)="submit()" class="scrollable-form">
         <mat-form-field appearance="fill">
             <mat-label>ID Number</mat-label>
             <input matInput formControlName="idNumber" placeholder="Enter ID Number">
             <mat-error *ngIf="employeeForm.get('idNumber').hasError('required')">ID Number is required</mat-error>
+            <mat-error *ngIf="employeeForm.get('idNumber').hasError('pattern')">ID Number is not valid</mat-error>
+
         </mat-form-field>
 
         <!-- First Name -->
@@ -53,49 +55,63 @@
                 required</mat-error>
         </mat-form-field>
 
-
         <!-- positions -->
         <div formArrayName="positionsList">
-            <div *ngFor="let position of positionsFormArray.controls; let i = index" class="position-container">
-                <div [formGroupName]="i" class="position-form">
-                    <h4>Position (1 or more)</h4>
-                    <mat-form-field appearance="fill" class="position-field">
-                        <mat-label>Position</mat-label>
-                        <mat-select formControlName="positionId" placeholder="Select Position" class="position-select">
-                            <mat-option *ngFor="let pos of positionsList" [value]="pos.id"
-                                [disabled]="isPositionDisabled(pos.id, i)">{{ pos.name }}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error
-                            *ngIf="positionsFormArray.controls[i].get('positionId').hasError('required')">Position is
-                            required</mat-error>
-                    </mat-form-field>
+            <mat-expansion-panel *ngFor="let position of positionsFormArray.controls; let i = index">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Position {{ i + 1 }} 
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div [formGroupName]="i" class="position-container">
+                    <div class="position-form">
+                        <mat-form-field appearance="fill" class="position-field">
+                            <mat-label>Position</mat-label>
+                            <mat-select formControlName="positionId" placeholder="Select Position"
+                                class="position-select">
+                                <mat-option *ngFor="let pos of positionsList" [value]="pos.id"
+                                    [disabled]="isPositionDisabled(pos.id, i)">{{ pos.name }}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error
+                                *ngIf="positionsFormArray.controls[i].get('positionId').hasError('required')">Position
+                                is
+                                required</mat-error>
+                        </mat-form-field>
 
-                    <mat-form-field appearance="fill" class="position-field">
-                        <mat-label>Entry Date</mat-label>
-                        <input matInput [matDatepicker]="entryDatePicker" formControlName="entryDate"
-                            placeholder="Enter Entry Date" class="position-input">
-                        <mat-datepicker-toggle matSuffix [for]="entryDatePicker"></mat-datepicker-toggle>
-                        <mat-datepicker #entryDatePicker></mat-datepicker>
-                        <mat-error *ngIf="positionsFormArray.controls[i].get('entryDate').hasError('required')">Entry
-                            Date is required</mat-error>
-                    </mat-form-field>
+                        <mat-form-field appearance="fill" class="position-field">
+                            <mat-label>Entry Date</mat-label>
+                            <input matInput [matDatepicker]="entryDatePicker" formControlName="entryDate"
+                                placeholder="Enter Entry Date" class="position-input">
+                            <mat-datepicker-toggle matSuffix [for]="entryDatePicker"></mat-datepicker-toggle>
+                            <mat-datepicker #entryDatePicker></mat-datepicker>
+                            <mat-error
+                                *ngIf="positionsFormArray.controls[i].get('entryDate').hasError('required')">Entry
+                                Date is required</mat-error>
+                            <mat-error
+                                *ngIf="positionsFormArray.controls[i].get('entryDate').hasError('entryDateInvalid')">Entry
+                                Date must be greater than or equal to Employment Start Date
+                            </mat-error>
 
-                    <mat-slide-toggle formControlName="isManagement" color="primary"
-                        class="position-toggle">Administrative</mat-slide-toggle>
+                        </mat-form-field>
 
-                    <button mat-icon-button color="warn" (click)="removePositionControl(i)"
-                        class="position-delete-button">
-                        <mat-icon>delete</mat-icon>
-                    </button>
+                        <mat-slide-toggle formControlName="isManagement" color="primary"
+                            class="position-toggle">Administrative</mat-slide-toggle>
+
+                        <button mat-icon-button color="warn" (click)="removePositionControl(i)"
+                            *ngIf="positionsFormArray.length>1" class="position-delete-button">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
                 </div>
-                <button mat-icon-button color="primary" (click)="addPositionControl()" class="position-add-button"
-                    matTooltip="Add position">
-                    <mat-icon>add</mat-icon>
-                </button>
-            </div>
-
+            </mat-expansion-panel>
         </div>
+
+        <button mat-icon-button color="primary" (click)="addPositionControl()" class="position-add-button"
+            matTooltip="Add position">
+            <mat-icon>add</mat-icon>
+        </button>
+
 
         <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
             <button mat-button color="warn" type="button" (click)="cancel()" style="margin-right: 10px;">Cancel</button>

@@ -1,4 +1,5 @@
 .table-container {
+  padding-top: 20px;
     width: 60%; 
     overflow: auto; 
     margin: auto;
@@ -25,5 +26,10 @@ table {
     display: flex;
     align-items: center;
   }
-  
-  
+  .centered-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* גובה מלא של העמוד */ 
+  }

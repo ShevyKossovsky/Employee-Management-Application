@@ -1,76 +1,97 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+// styles.scss
+// @import '~@angular/material/theming';
+// @include mat-core();
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.add-employee-container {
-  max-width: 500px;
-  margin: auto;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
+.form-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 
-  h2 {
-      text-align: center;
-      margin-bottom: 20px;
-  }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-  .form-container {
-      width: 100%;
-  }
+    .form-container {
+        width: 100%;
+    }
 
-  mat-form-field {
-      width: 100%;
-      margin-bottom: 20px;
+    mat-form-field {
+        width: 100%;
+        margin-bottom: 10px;
 
-      input {
-          width: 100%;
-      }
+        input {
+            width: 100%;
+        }
 
-      mat-select {
-          width: 100%;
-      }
-  }
+        mat-select {
+            width: 100%;
+        }
+    }
 
-  .position-container {
-      margin-bottom: 20px;
-  }
+    .position-container {
+        margin-bottom: 20px;
+    }
 
-  .position-form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: #f5f5f5;
-      border-radius: 5px;
-      width: 100%;
-      padding: 20px;
-      box-sizing: border-box; /* Include padding in width calculation */
-  }
+    .position-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        /* Include padding in width calculation */
+    }
 
-  .position-field {
-      margin-bottom: 10px;
-  }
+    .position-field {
+        margin-bottom: 10px;
+    }
 
-  .position-select,
-  .position-input {
-      width: 100%;
-  }
+    .position-select,
+    .position-input {
+        width: 100%;
+    }
 
-  .position-toggle {
-      margin-top: 10px;
-  }
+    .position-toggle {
+        margin-top: 10px;
+    }
 
-  .position-delete-button {
-      align-self: flex-start;
-  }
+    .position-delete-button {
+        align-self: flex-start;
+    }
 
-  button {
-      margin-right: 10px;
-  }
+    button {
+        margin-right: 10px;
+    }
 
-  .scrollable-form {
-      max-height: 600px; /* כאן תוכלי להגדיר גובה מקסימלי עבור הפורם */
-      overflow-y: auto; /* גלילה אנכית רק אם תוכן הפורם עובר את הגובה המקסימלי */
-  }
+    .scrollable-form {
+        max-height: 500px;
+        /* כאן תוכלי להגדיר גובה מקסימלי עבור הפורם */
+        overflow-y: auto;
+        /* גלילה אנכית רק אם תוכן הפורם עובר את הגובה המקסימלי */
+    }
 }
+
+
+// // צבע ראשי
+// $primary-color: #009479;
+
+
+// // צבע משנה
+// $accent-color: #ff4081;
+
+// $warn-color:red;
+
+// // עדכון הערכות הצבעים של Angular Material
+// @include mat-core($color: mat-palette($primary-color), $accent: mat-palette($accent-color, A200), $warn: mat-palette($warn-color),$primary: mat-palette($primary-color));

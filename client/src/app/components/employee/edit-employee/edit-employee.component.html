@@ -73,6 +73,8 @@
                                 [disabled]="isPositionDisabled(pos.id, i)">
                                 {{ pos.name }}
                             </mat-option>
+                            <mat-option value="other">Other</mat-option>
+
                         </mat-select>
                         <mat-error
                             *ngIf="positionsFormArray.controls[i].get('positionId').hasError('required')">Position is

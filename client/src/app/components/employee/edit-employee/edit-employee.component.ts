@@ -1,6 +1,6 @@
 
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder, FormGroup, Validators, FormArray, AbstractControl } from '@angular/forms';
 import { EmployeeService } from '../../../services/employee/employee.service';
@@ -16,7 +16,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatSelectModule } from '@angular/material/select';
+import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -25,9 +25,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { AddPositionComponent } from '../add-position/add-position.component';
 @Component({
   selector: 'app-edit-employee',
   templateUrl: './edit-employee.component.html',
@@ -73,7 +74,8 @@ export class EditEmployeeComponent {
     @Inject(MAT_DIALOG_DATA) public data: { employee: Employee },
     private employeeService: EmployeeService,
     private _snackBar: MatSnackBar,
-    private positionService: PositionService
+    private positionService: PositionService,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -180,5 +182,26 @@ export class EditEmployeeComponent {
 
   cancel(): void {
     this.dialogRef.close();
+  }
+
+  onPositionSelectionChange(event: MatSelectChange): void {
+    const selectedPosition = event.value;
+    if (selectedPosition === 'other') {
+        // Open dialog to add new position
+        this.openAddPositionDialog();
+    }
+}
+  openAddPositionDialog() {
+    const dialogRef = this.dialog.open(AddPositionComponent, {
+      width:'500px'
+    });
+
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadPositions();
+      }
+    });
+   
   }
 }

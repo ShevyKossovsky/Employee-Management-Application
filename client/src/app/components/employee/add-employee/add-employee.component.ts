@@ -165,7 +165,7 @@ export class AddEmployeeComponent {
   
 
   cancel(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(true);
   }
 
   openSnackBar() {

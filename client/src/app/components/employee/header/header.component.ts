@@ -21,6 +21,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { ExportToExcelComponent } from "../export-to-excel/export-to-excel.component";
+import { AuthService } from '../../../services/auth/auth.service';
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -54,7 +55,9 @@ import { ExportToExcelComponent } from "../export-to-excel/export-to-excel.compo
     ]
 })
 export class HeaderComponent {
-  
+    navigateToGithub() {
+        window.open('https://github.com/ShevyKossovsky/Practicum', '_blank');
+    }
 
-  
+
 }

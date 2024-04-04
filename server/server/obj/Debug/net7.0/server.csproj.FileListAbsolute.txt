@@ -162,3 +162,4 @@ C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\
 C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\server\obj\Debug\net7.0\server.pdb
 C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\server\obj\Debug\net7.0\server.genruntimeconfig.cache
 C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\server\obj\Debug\net7.0\ref\server.dll
+C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\server\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

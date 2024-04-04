@@ -1,9 +1,8 @@
 
 import { Routes } from '@angular/router';
-import "@angular/compiler";
+import { AppComponent } from './app.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'employees', pathMatch: 'full' },
-    { path: 'employees', loadChildren: () => import('../app/components/employee/employee.module').then(m => m.EmployeeModule) }
-    
+    { path: 'employees', component: AppComponent }
 ];

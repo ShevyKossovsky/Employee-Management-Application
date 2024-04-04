@@ -1,6 +1,6 @@
 <div class="form-container">
     <h2>Edit Employee</h2>
-    <form [formGroup]="employeeForm" (ngSubmit)="submit()" class="scrollable-form">
+    <form [formGroup]="employeeForm"  class="scrollable-form">
         <mat-form-field appearance="fill">
             <mat-label>ID Number</mat-label>
             <input matInput formControlName="idNumber" placeholder="Enter ID Number">
@@ -8,12 +8,14 @@
             <mat-error *ngIf="employeeForm.get('idNumber').hasError('pattern')">ID Number is not valid</mat-error>
         </mat-form-field>
 
+
         <!-- First Name -->
         <mat-form-field appearance="fill">
             <mat-label>First Name</mat-label>
             <input matInput formControlName="firstName" placeholder="Enter First Name">
             <mat-error *ngIf="employeeForm.get('firstName').hasError('required')">First Name is required</mat-error>
         </mat-form-field>
+
 
         <!-- Last Name -->
         <mat-form-field appearance="fill">
@@ -32,6 +34,7 @@
             </mat-select>
             <mat-error *ngIf="employeeForm.get('gender').hasError('required')">Gender is required</mat-error>
         </mat-form-field>
+
 
         <!-- Date of Birth -->
         <mat-form-field appearance="fill">
@@ -107,7 +110,7 @@
 
         <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
             <button mat-button color="warn" type="button" (click)="cancel()" style="margin-right: 10px;">Cancel</button>
-            <button mat-button color="primary" type="submit">Submit</button>
+            <button mat-button color="primary" type="submit" (click)="submit()">Submit</button>
         </div>
     </form>
 </div>

@@ -1,18 +1,71 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
+import {  OnInit, ViewEncapsulation } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { Observable } from 'rxjs';
 import { EmployeeService } from '../../../services/employee/employee.service';
 import { Employee } from '../../../models/employee.model';
 import { saveAs } from 'file-saver';
-
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule, MatIconButton } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 @Component({
   selector: 'app-export-to-excel',
-  templateUrl: './export-to-excel.component.html',
-  styleUrls: ['./export-to-excel.component.scss'],
-  encapsulation: ViewEncapsulation.None
-})
-export class ExportToExcelComponent implements OnInit {
+  standalone: true,
+  imports: [
+    CommonModule,
+  
+    MatIconModule,
+    MatIconButton,
+    MatButtonModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule ,
+    MatPaginatorModule,
+    MatSlideToggleModule,
+    MatExpansionModule,
+    MatCardModule ,
+    MatDividerModule 
 
+
+
+
+
+
+
+  ],
+  templateUrl: './export-to-excel.component.html',
+  styleUrl: './export-to-excel.component.scss'
+})
+export class ExportToExcelComponent {
   constructor(private _employeeService: EmployeeService) { }
 
   ngOnInit(): void {

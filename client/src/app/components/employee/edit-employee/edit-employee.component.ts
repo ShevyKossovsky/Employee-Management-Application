@@ -7,11 +7,61 @@ import { EmployeeService } from '../../../services/employee/employee.service';
 import { Employee } from '../../../models/employee.model';
 import { Position } from '../../../models/position.model';
 import { PositionService } from '../../../services/positions/position.service';
-
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule, MatIconButton } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 @Component({
   selector: 'app-edit-employee',
   templateUrl: './edit-employee.component.html',
-  styleUrls: ['./edit-employee.component.scss']
+  styleUrls: ['./edit-employee.component.scss'],
+  standalone: true,
+  imports:[
+    CommonModule,
+    MatIconModule,
+    MatIconButton,
+    MatButtonModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule ,
+    MatPaginatorModule,
+    MatSlideToggleModule,
+    MatExpansionModule,
+    MatCardModule ,
+    MatDividerModule 
+
+
+
+  ]
+
 })
 export class EditEmployeeComponent {
   employeeForm: FormGroup;
@@ -68,8 +118,10 @@ export class EditEmployeeComponent {
   }
 
   addPositionControl(position?: any): void {
+    console.log("add position");
+    
     const positionGroup = this.fb.group({
-      positionId: [position ? position.id : '', Validators.required],
+      positionId: [position ? position.position.id : '', Validators.required],
       isManagement: [position ? position.isManagement : false, Validators.required],
       entryDate: [position ? position.entryDate : '', [Validators.required, this.entryDateValidator()]]
     });
@@ -79,7 +131,6 @@ export class EditEmployeeComponent {
   removePositionControl(index: number): void {
     this.positionsFormArray.removeAt(index);
   }
-
   isPositionDisabled(positionId: number, index: number): boolean {
     const selectedPositions = this.employeeForm.value.positionsList.map((pos: any) => pos.positionId);
     return selectedPositions.includes(positionId) && selectedPositions.indexOf(positionId) !== index;
@@ -94,6 +145,9 @@ export class EditEmployeeComponent {
   }
 
   submit(): void {
+
+    console.log("submit is called");
+    
     if (this.employeeForm.valid) {
       const formData = this.employeeForm.value;
       this.employeeService.updateEmployee(formData.id, formData).subscribe(

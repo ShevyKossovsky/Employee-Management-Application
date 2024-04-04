@@ -1,15 +1,69 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray, AbstractControl } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule, MatIconButton } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { Position } from '../../../models/position.model';
 import { EmployeeService } from '../../../services/employee/employee.service';
 import { PositionService } from '../../../services/positions/position.service';
-import { Position } from '../../../models/position.model';
-
 @Component({
   selector: 'app-add-employee',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatIconButton,
+    MatButtonModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule ,
+    MatPaginatorModule,
+    MatSlideToggleModule,
+    MatExpansionModule,
+    MatCardModule ,
+    MatDividerModule 
+
+
+
+
+
+
+
+
+
+
+  ],
   templateUrl: './add-employee.component.html',
-  styleUrls: ['./add-employee.component.scss']
+  styleUrl: './add-employee.component.scss'
 })
 export class AddEmployeeComponent {
   employeeForm!: FormGroup;
@@ -82,7 +136,7 @@ export class AddEmployeeComponent {
       this.employeeService.addEmployee(formData).subscribe(
         () => {
           this.openSnackBar();
-          this.dialogRef.close();
+          this.dialogRef.close(true);
         },
         error => {
           console.error('Error adding employee:', error);

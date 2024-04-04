@@ -1,6 +1,6 @@
 <div class="form-container">
     <h2>Add New Employee</h2>
-    <form [formGroup]="employeeForm" (ngSubmit)="submit()" class="scrollable-form">
+    <form [formGroup]="employeeForm" class="scrollable-form">
         <mat-form-field appearance="fill">
             <mat-label>ID Number</mat-label>
             <input matInput formControlName="idNumber" placeholder="Enter ID Number">
@@ -60,7 +60,7 @@
             <mat-expansion-panel *ngFor="let position of positionsFormArray.controls; let i = index">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        Position {{ i + 1 }} 
+                        Position {{ i + 1 }}
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div [formGroupName]="i" class="position-container">
@@ -115,7 +115,7 @@
 
         <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
             <button mat-button color="warn" type="button" (click)="cancel()" style="margin-right: 10px;">Cancel</button>
-            <button mat-button color="primary" type="submit">Submit</button>
+            <button mat-button color="primary" type="submit" (click)="submit()">Submit</button>
         </div>
 
     </form>

@@ -61,7 +61,7 @@ import { AddPositionComponent } from '../add-position/add-position.component';
 
 
 
-  ]
+  ],
 
 })
 export class EditEmployeeComponent {
@@ -184,22 +184,18 @@ export class EditEmployeeComponent {
     this.dialogRef.close();
   }
 
-  onPositionSelectionChange(event: MatSelectChange): void {
-    const selectedPosition = event.value;
-    if (selectedPosition === 'other') {
-        // Open dialog to add new position
-        this.openAddPositionDialog();
-    }
-}
+ 
+
   openAddPositionDialog() {
     const dialogRef = this.dialog.open(AddPositionComponent, {
-      width:'500px'
+      width:'300px'
     });
 
   
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.loadPositions();
+        //this.setEmployeeData();
       }
     });
    

@@ -22,6 +22,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { ExportToExcelComponent } from "../export-to-excel/export-to-excel.component";
 import { AuthService } from '../../../services/auth/auth.service';
+import { LoginComponent } from "../login/login.component";
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -51,7 +52,8 @@ import { AuthService } from '../../../services/auth/auth.service';
         MatExpansionModule,
         MatCardModule,
         MatDividerModule,
-        ExportToExcelComponent
+        ExportToExcelComponent,
+        LoginComponent
     ]
 })
 export class HeaderComponent {

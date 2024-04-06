@@ -5,9 +5,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -59,17 +59,30 @@ export class AddPositionComponent {
 
 
 
-  constructor(private _positionService: PositionService) { }
-
-  closeDialog() {
+  constructor(
+    private _positionService: PositionService,
+    private dialogRef: MatDialogRef<AddPositionComponent>,
+    private _snackBar: MatSnackBar,
+  ) {
   }
-  submit() {
+ 
+  positionForm: FormGroup = new FormGroup({
+    name: new FormControl('', Validators.required)
+  });
 
-    this._positionService.addPosition(this.positionForm.value).subscribe(res => {
-      console.log(res);
-    });
+  submit(): void {
+    if (this.positionForm.valid) {
+      this._positionService.addPosition(this.positionForm.value).subscribe(res => {
+        this._snackBar.open('Position added successfully', 'Close', { duration: 3000 });
+        this.dialogRef.close(true);
+      });
+    } else {
+      this._snackBar.open('Please fill all required fields', 'Close', { duration: 3000 });
+    }
+    }
+
+  closeDialog(): void {
+    this.dialogRef.close();
   }
-
-
 
 }

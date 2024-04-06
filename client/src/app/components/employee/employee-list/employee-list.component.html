@@ -1,4 +1,4 @@
-<div *ngIf="employees.length == 0" class="centered-container" ngSkipHydration>
+<div *ngIf="employees.length === 0" class="centered-container" ngSkipHydration>
   <h3>
     You don't have any employees yet
   </h3>
@@ -70,13 +70,17 @@
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+
+
 
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="8">No data matching the filter "{{input.value}}"</td>
       </tr>
+
     </table>
 
     <mat-paginator [pageSizeOptions]="[20,100,200,1000]" aria-label="Select page of users"></mat-paginator>

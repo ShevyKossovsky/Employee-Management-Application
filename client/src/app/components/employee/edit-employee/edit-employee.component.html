@@ -73,7 +73,7 @@
                                 [disabled]="isPositionDisabled(pos.id, i)">
                                 {{ pos.name }}
                             </mat-option>
-                            <mat-option value="other">Other</mat-option>
+                            <mat-option value="other" (click)="openAddPositionDialog()">Other</mat-option>
 
                         </mat-select>
                         <mat-error
@@ -109,6 +109,7 @@
             matTooltip="Add position">
             <mat-icon>add</mat-icon>
         </button>
+      
 
         <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
             <button mat-button color="warn" type="button" (click)="cancel()" style="margin-right: 10px;">Cancel</button>

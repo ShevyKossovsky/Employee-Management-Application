@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
@@ -24,6 +24,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { Position } from '../../../models/position.model';
 import { EmployeeService } from '../../../services/employee/employee.service';
 import { PositionService } from '../../../services/positions/position.service';
+import { AddPositionComponent } from '../add-position/add-position.component';
 @Component({
   selector: 'app-add-employee',
   standalone: true,
@@ -74,7 +75,9 @@ export class AddEmployeeComponent {
     private dialogRef: MatDialogRef<AddEmployeeComponent>,
     private employeeService: EmployeeService,
     private positionService: PositionService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private dialog: MatDialog,
+
   ) { }
 
   ngOnInit(): void {
@@ -175,5 +178,20 @@ export class AddEmployeeComponent {
     });
     snackBarRef.afterDismissed().subscribe(() => {
     });
+  }
+
+
+  openAddPositionDialog() {
+    const dialogRef = this.dialog.open(AddPositionComponent, {
+      width:'300px'
+    });
+
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadPositions();
+      }
+    });
+   
   }
 }

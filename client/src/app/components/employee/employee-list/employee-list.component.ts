@@ -114,15 +114,14 @@ export class EmployeeListComponent implements AfterViewInit {
     });
   }
 
-  applyFilter(event: Event) {
+  applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
+  
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
   }
-
   openDeleteConfirmation(employee: Employee): void {
     const dialogRef = this.dialog.open(DeleteEmployeeComponent, {
       data: { employee }

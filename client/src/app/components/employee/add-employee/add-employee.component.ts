@@ -132,6 +132,14 @@ export class AddEmployeeComponent {
     const selectedPositions = this.employeeForm.value.positionsList.map((pos: any) => pos.positionId);
     return selectedPositions.includes(positionId) && selectedPositions.indexOf(positionId) !== index;
   }
+  sortedPositions(): any[] {
+    return this.positionsList.sort((a, b) => {
+      // אם a קטן מ b, החזר -1, אם הם שווים, החזר 0, אחרת החזר 1
+      if (a.name < b.name) return -1;
+      if (a.name > b.name) return 1;
+      return 0;
+    });
+  }
   
   submit(): void {
     if (this.employeeForm.valid) {

@@ -34,7 +34,7 @@ import { AddPositionComponent } from '../add-position/add-position.component';
   templateUrl: './edit-employee.component.html',
   styleUrls: ['./edit-employee.component.scss'],
   standalone: true,
-  imports:[
+  imports: [
     CommonModule,
     MatIconModule,
     MatIconButton,
@@ -52,12 +52,12 @@ import { AddPositionComponent } from '../add-position/add-position.component';
     MatToolbarModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule ,
+    MatInputModule,
     MatPaginatorModule,
     MatSlideToggleModule,
     MatExpansionModule,
-    MatCardModule ,
-    MatDividerModule 
+    MatCardModule,
+    MatDividerModule
 
 
 
@@ -121,7 +121,7 @@ export class EditEmployeeComponent {
 
   addPositionControl(position?: any): void {
     console.log("add position");
-    
+
     const positionGroup = this.fb.group({
       positionId: [position ? position.position.id : '', Validators.required],
       isManagement: [position ? position.isManagement : false, Validators.required],
@@ -145,11 +145,19 @@ export class EditEmployeeComponent {
       return entryDate >= startOfWorkDate ? null : { 'entryDateInvalid': true };
     };
   }
+  sortedPositions(): any[] {
+    return this.positions.sort((a, b) => {
+      // אם a קטן מ b, החזר -1, אם הם שווים, החזר 0, אחרת החזר 1
+      if (a.name < b.name) return -1;
+      if (a.name > b.name) return 1;
+      return 0;
+    });
+  }
 
   submit(): void {
 
     console.log("submit is called");
-    
+
     if (this.employeeForm.valid) {
       const formData = this.employeeForm.value;
       this.employeeService.updateEmployee(formData.id, formData).subscribe(
@@ -184,20 +192,20 @@ export class EditEmployeeComponent {
     this.dialogRef.close();
   }
 
- 
+
 
   openAddPositionDialog() {
     const dialogRef = this.dialog.open(AddPositionComponent, {
-      width:'300px'
+      width: '300px'
     });
 
-  
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.loadPositions();
         //this.setEmployeeData();
       }
     });
-   
+
   }
 }

@@ -35,5 +35,6 @@ namespace Server.Service.Services
             return await _positionRepository.AddPositionAsync(position);
         }
 
+
     }
 }

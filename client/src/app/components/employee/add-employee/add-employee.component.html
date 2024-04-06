@@ -69,7 +69,7 @@
                             <mat-label>Position</mat-label>
                             <mat-select formControlName="positionId" placeholder="Select Position"
                                 class="position-select">
-                                <mat-option *ngFor="let pos of positionsList" [value]="pos.id"
+                                <mat-option *ngFor="let pos of sortedPositions()" [value]="pos.id"
                                     [disabled]="isPositionDisabled(pos.id, i)">{{ pos.name }}
                                 </mat-option>
                                 <mat-option value="other" (click)="openAddPositionDialog()">Other</mat-option>

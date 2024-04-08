@@ -46,12 +46,12 @@ import { AddPositionComponent } from '../add-position/add-position.component';
     MatToolbarModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule ,
+    MatInputModule,
     MatPaginatorModule,
     MatSlideToggleModule,
     MatExpansionModule,
-    MatCardModule ,
-    MatDividerModule 
+    MatCardModule,
+    MatDividerModule
 
 
 
@@ -87,10 +87,10 @@ export class AddEmployeeComponent {
 
   initializeForm(): void {
     this.employeeForm = this.fb.group({
-      idNumber: ['',[Validators.required, Validators.pattern(/^\d{9}$/)]], // ווידטור של pattern מוודא שהתעודת זהות מכילה 9 ספרות
+      idNumber: ['', [Validators.required, Validators.pattern(/^\d{9}$/)]], 
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      gender: ['', Validators.required], 
+      gender: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
       employmentStartDate: ['', Validators.required],
       positionsList: this.fb.array([], Validators.required)
@@ -106,6 +106,8 @@ export class AddEmployeeComponent {
   loadPositions(): void {
     this.positionService.getAllPositions().subscribe(positions => {
       this.positionsList = positions;
+      console.log(this.positionsList);
+      
       this.addPositionControl();
     });
   }
@@ -114,7 +116,8 @@ export class AddEmployeeComponent {
     this.positionsFormArray.push(this.fb.group({
       positionId: ['', Validators.required],
       isManagement: [false],
-      entryDate: ['', [Validators.required, this.entryDateValidator()]]}));
+      entryDate: ['', [Validators.required, this.entryDateValidator()]]
+    }));
   }
 
   entryDateValidator() {
@@ -123,6 +126,10 @@ export class AddEmployeeComponent {
       const startOfWorkDate = new Date(this.employeeForm.get('employmentStartDate').value);
       return entryDate >= startOfWorkDate ? null : { 'entryDateInvalid': true };
     };
+  }
+
+  closeForm() {
+    this.dialog.closeAll();
   }
   removePositionControl(index: number): void {
     this.positionsFormArray.removeAt(index);
@@ -140,7 +147,7 @@ export class AddEmployeeComponent {
       return 0;
     });
   }
-  
+
   submit(): void {
     if (this.employeeForm.valid) {
       const formData = this.employeeForm.value;
@@ -166,14 +173,14 @@ export class AddEmployeeComponent {
       this.openErrorSnackBar('Form is not valid. Please fill all required fields.');
     }
   }
-  
+
   openErrorSnackBar(message: string): void {
     this._snackBar.open(message, 'Close', {
       duration: 5000,
       panelClass: ['error-snackbar']
     });
   }
-  
+
 
   cancel(): void {
     this.dialogRef.close(true);
@@ -189,17 +196,27 @@ export class AddEmployeeComponent {
   }
 
 
-  openAddPositionDialog() {
+  openAddPositionDialog(): void {
     const dialogRef = this.dialog.open(AddPositionComponent, {
-      width:'300px'
+      width: '300px'
     });
-
   
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.loadPositions();
+        const lastIndex = this.positionsList.length-1 ;
+        const newAddedPosition = this.positionsList.at(lastIndex);
+        console.log(newAddedPosition);
+        
+      //  this.positionsFormArray.at(lastIndex).get('positionId').setValue(newAddedPosition);
       }
     });
-   
   }
+
+
+
+
+
+
+
 }

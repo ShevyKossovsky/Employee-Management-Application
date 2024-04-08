@@ -108,6 +108,9 @@ export class EditEmployeeComponent {
       this.addPositionControl(position);
     });
   }
+  closeForm() {
+    this.dialog.closeAll();
+  }
 
   get positionsFormArray(): FormArray {
     return this.employeeForm.get('positionsList') as FormArray;
@@ -157,7 +160,6 @@ export class EditEmployeeComponent {
   submit(): void {
 
     console.log("submit is called");
-
     if (this.employeeForm.valid) {
       const formData = this.employeeForm.value;
       this.employeeService.updateEmployee(formData.id, formData).subscribe(
@@ -203,7 +205,6 @@ export class EditEmployeeComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.loadPositions();
-        //this.setEmployeeData();
       }
     });
 

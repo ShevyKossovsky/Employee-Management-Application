@@ -4,9 +4,9 @@
 
 ## Description
 
-This is an employee management application built using Angular for the frontend and .NET Core for the backend. The application allows users to manage employee data, including adding, editing, and deleting employees. Users can also view employee details and have personalized user areas.
+This is an employee management application built using Angular for the frontend and .NET Core for the backend. The application allows the manager to manage employee data, including adding, editing and deleting employees. The manager can also view the employee details or export to the local computer.
 
-The application utilizes various external libraries, including Angular Material  to enhance its user interface and provide a visually appealing experience.
+The app uses various external libraries, including Angular Material to enhance its user interface and provide a visually appealing experience.
 
 
 ## Technologies Used

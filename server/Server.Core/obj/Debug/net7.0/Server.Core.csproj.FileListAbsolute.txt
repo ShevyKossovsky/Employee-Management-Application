@@ -12,17 +12,3 @@ C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\server\Server.C
 C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\server\Server.Core\obj\Debug\net7.0\ref\Server.Core.dll
 C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\server\Server.Core\bin\Debug\net7.0\Server.Core.runtimeconfig.json
 C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\server\Server.Core\obj\Debug\net7.0\Server.Core.genruntimeconfig.cache
-C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\Server.Core\bin\Debug\net7.0\Server.Core.deps.json
-C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\Server.Core\bin\Debug\net7.0\Server.Core.runtimeconfig.json
-C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\Server.Core\bin\Debug\net7.0\Server.Core.dll
-C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\Server.Core\bin\Debug\net7.0\Server.Core.pdb
-C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\Server.Core\obj\Debug\net7.0\Server.Core.csproj.AssemblyReference.cache
-C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\Server.Core\obj\Debug\net7.0\Server.Core.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\Server.Core\obj\Debug\net7.0\Server.Core.AssemblyInfoInputs.cache
-C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\Server.Core\obj\Debug\net7.0\Server.Core.AssemblyInfo.cs
-C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\Server.Core\obj\Debug\net7.0\Server.Core.csproj.CoreCompileInputs.cache
-C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\Server.Core\obj\Debug\net7.0\Server.Core.dll
-C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\Server.Core\obj\Debug\net7.0\refint\Server.Core.dll
-C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\Server.Core\obj\Debug\net7.0\Server.Core.pdb
-C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\Server.Core\obj\Debug\net7.0\Server.Core.genruntimeconfig.cache
-C:\Users\user1\Desktop\הנדסת תוכנה\שנה ב\Practicum\Project\server\Server.Core\obj\Debug\net7.0\ref\Server.Core.dll

@@ -162,31 +162,39 @@ export class EditEmployeeComponent {
     console.log("submit is called");
     if (this.employeeForm.valid) {
       const formData = this.employeeForm.value;
+      console.log(formData);
+      
       this.employeeService.updateEmployee(formData.id, formData).subscribe(
-        () => {
+        (res) => {
+          console.log(res);
           this.openSnackBar('Employee edited successfully');
           this.dialogRef.close(true);
+
         },
         error => {
           console.error('Error editing employee:', error);
           if (error.error.errors) {
             const errorMessage = 'Server validation errors: ' + Object.values(error.error.errors).join(', ');
-            this.openSnackBar(errorMessage);
+            this.openErrorSnackBar(errorMessage);
           } else {
-            this.openSnackBar('An error occurred while editing employee.');
+            this.openErrorSnackBar('An error occurred while editing employee.');
           }
         }
       );
     } else {
       console.error('Form is not valid');
-      this.openSnackBar('Form is not valid. Please fill all required fields.');
+      this.openErrorSnackBar('Form is not valid. Please fill all required fields.');
     }
   }
 
   openSnackBar(message: string): void {
     this._snackBar.open(message, 'Close', {
-      duration: 2000,
-      panelClass: ['custom-snackbar']
+      duration: 3000,
+    });
+  }
+  openErrorSnackBar(message: string): void {
+    this._snackBar.open(message, 'Close', {
+      duration: 3000,
     });
   }
 

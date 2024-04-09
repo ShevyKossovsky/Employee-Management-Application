@@ -53,15 +53,6 @@ import { AddPositionComponent } from '../add-position/add-position.component';
     MatCardModule,
     MatDividerModule
 
-
-
-
-
-
-
-
-
-
   ],
   templateUrl: './add-employee.component.html',
   styleUrl: './add-employee.component.scss'
@@ -69,6 +60,7 @@ import { AddPositionComponent } from '../add-position/add-position.component';
 export class AddEmployeeComponent {
   employeeForm!: FormGroup;
   positionsList: Position[] = [];
+
 
   constructor(
     private fb: FormBuilder,
@@ -204,11 +196,7 @@ export class AddEmployeeComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.loadPositions();
-        const lastIndex = this.positionsList.length-1 ;
-        const newAddedPosition = this.positionsList.at(lastIndex);
-        console.log(newAddedPosition);
-        
-      //  this.positionsFormArray.at(lastIndex).get('positionId').setValue(newAddedPosition);
+      
       }
     });
   }

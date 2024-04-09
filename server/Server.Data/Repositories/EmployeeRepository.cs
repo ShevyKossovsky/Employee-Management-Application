@@ -152,6 +152,8 @@ namespace Server.Data.Repositories
             updateEmployee.Gender = employee.Gender;
             updateEmployee.EmploymentStartDate = employee.EmploymentStartDate;
             updateEmployee.DateOfBirth = employee.DateOfBirth;
+           
+
             updateEmployee.IsActive = employee.IsActive;
 
             // נקה את רשימת התפקידים הקיימת והוסף מחדש

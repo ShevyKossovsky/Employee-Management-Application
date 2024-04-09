@@ -10,8 +10,3 @@ export class Employee {
     dateOfBirth!: Date;
     positionsList!: EmployeePosition[];
 }
-// export enum EGender
-// {
-//     Male ,
-//     Female
-// }

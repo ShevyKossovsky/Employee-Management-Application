@@ -68,3 +68,4 @@ http://localhost:4200/
 
 ### contact
 0556773361 s0556773361@gmail.com
+![Employee Management](/client/src/assets/screenShot_3.png)

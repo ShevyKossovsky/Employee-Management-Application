@@ -20,8 +20,8 @@ export class PositionService {
   }
 
 
-  addPosition(position: Position): Observable<Position[]> {
-    return this.http.post<Position[]>(this.url, position)
+  addPosition(position: Position): Observable<Position> {
+    return this.http.post<Position>(this.url, position)
   }
 
 

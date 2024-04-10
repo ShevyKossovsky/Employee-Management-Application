@@ -46,8 +46,8 @@ export class BirthdayReminderComponent {
       employeeDob.setHours(0, 0, 0, 0);
   
       if (employeeDob.getTime() === today.getTime()) { 
-        this.showBirthdayNotification(employee.firstName);
-        console.log("Birthday notification updated successfully for ", employee.firstName);
+        const fullName = employee.firstName+" "+employee.lastName;
+        this.showBirthdayNotification(fullName);
       }
     });
   }

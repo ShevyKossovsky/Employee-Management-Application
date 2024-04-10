@@ -74,7 +74,7 @@
                                 <mat-option *ngFor="let pos of sortedPositions(); let i = index" [value]="pos.id" [disabled]="isPositionDisabled(pos.id, i)">
                                   {{ pos.name }}
                                 </mat-option>
-                                <mat-option value="other" (click)="openAddPositionDialog()">Other</mat-option>
+                                <mat-option value="other" (click)="openAddPositionDialog()">{{newPositionName }}</mat-option>
                               </mat-select>
                             <mat-error
                                 *ngIf="positionsFormArray.controls[i].get('positionId').hasError('required')">Position

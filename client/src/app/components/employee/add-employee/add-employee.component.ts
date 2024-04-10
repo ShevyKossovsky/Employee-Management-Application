@@ -60,7 +60,7 @@ import { AddPositionComponent } from '../add-position/add-position.component';
 export class AddEmployeeComponent {
   employeeForm!: FormGroup;
   positionsList: Position[] = [];
-
+  newPositionName:string = 'other';
 
   constructor(
     private fb: FormBuilder,
@@ -79,7 +79,7 @@ export class AddEmployeeComponent {
 
   initializeForm(): void {
     this.employeeForm = this.fb.group({
-      idNumber: ['', [Validators.required, Validators.pattern(/^\d{9}$/)]], 
+      idNumber: ['', [Validators.required, Validators.pattern(/^\d{9}$/)]],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       gender: ['', Validators.required],
@@ -99,7 +99,7 @@ export class AddEmployeeComponent {
     this.positionService.getAllPositions().subscribe(positions => {
       this.positionsList = positions;
       console.log(this.positionsList);
-      
+
       this.addPositionControl();
     });
   }
@@ -192,11 +192,12 @@ export class AddEmployeeComponent {
     const dialogRef = this.dialog.open(AddPositionComponent, {
       width: '300px'
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.loadPositions();
-      
+        console.log(this.positionsList);
+
       }
     });
   }

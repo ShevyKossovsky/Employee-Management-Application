@@ -23,47 +23,44 @@ The app uses various external libraries, including Angular Material to enhance i
 1. Clone the repository to your local machine:
 
 ```
-git clone https://github.com/ShevyKossovsky/Practicum.git
-   
+git clone https://github.com/ShevyKossovsky/Practicum.git  
 ```
 
-3. Navigate to the client project directory.
+2. Navigate to the client project directory.
 
-4. Install the necessary dependencies
+3. Install the necessary dependencies
 
 ```
 npm install
-
 ```
-5. Run the frontend server.
+
+4. Run the frontend server.
 
 ```
 ng s -o
-
 ```    
 
 ### Local Database Setup
 
 To set up the local database, follow these steps:
 
-Open the console and navigate to the ***server.data*** project directory.
+5. Open the console and navigate to the ***server.data*** project directory.
 
 -Run the following commands:
 
-```
 
+```
 Add-Migration MigrationName
 
 Update-Database
+```
+  
+6. Run the backend server.
 
-```   
-7. Run the backend server.
-
-8. Access the application through your web browser.
+7. Access the application through your web browser.
    
 ```
 http://localhost:4200/
-
 ```   
 
 ## License

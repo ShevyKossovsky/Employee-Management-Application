@@ -60,5 +60,5 @@ export class HeaderComponent {
         window.open('https://github.com/ShevyKossovsky/Practicum', '_blank');
     }
 
-
+    
 }

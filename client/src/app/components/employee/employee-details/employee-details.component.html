@@ -4,13 +4,13 @@
     </button>
 
     <mat-card-header>
-        <mat-card-title><strong>{{ data.employee.firstName }} {{ data.employee.lastName }} </strong></mat-card-title>
+        <mat-card-title><strong><mat-icon>person</mat-icon> {{ data.employee.firstName }} {{ data.employee.lastName }} </strong></mat-card-title>
         <mat-card-subtitle>ID Number: {{ data.employee.idNumber }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <p><strong>Gender:</strong> {{ data.employee.gender }}</p>
-        <p><strong>Date of Birth:</strong> {{ data.employee.dateOfBirth | date }}</p>
-        <p><strong>Start of Work Date:</strong> {{ data.employee.employmentStartDate | date }}</p>
+        <p><strong><mat-icon>wc</mat-icon> Gender:</strong> {{ data.employee.gender }}</p>
+        <p><strong><mat-icon>event</mat-icon> Date of Birth:</strong> {{ data.employee.dateOfBirth | date }}</p>
+        <p><strong><mat-icon>work</mat-icon>Start of Work Date:</strong> {{ data.employee.employmentStartDate | date }}</p>
 
         <div *ngIf="data.employee.positionsList.length > 0">
             <h3>Positions:</h3>

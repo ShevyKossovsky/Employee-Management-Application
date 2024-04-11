@@ -46,12 +46,10 @@ To set up the local database, follow these steps:
 
 5. Open the console and navigate to the ***server.data*** project directory.
 
--Run the following commands:
+-Create a new local database:
 
 
 ```
-Add-Migration MigrationName
-
 Update-Database
 ```
   

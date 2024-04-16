@@ -44,7 +44,7 @@ ng s -o
 
 To set up the local database, follow these steps:
 
-5. Open the console and navigate to the  ``***server.data***`` project directory.
+5. Open the console and navigate to the  ***server.data*** project directory.
 
 -Create a new local database:
 

@@ -1,14 +1,15 @@
-## Employee Management Application
+# Employee Management Application
 
 ![Employee Management](/client/src/assets/screenShot.png)
 
-### Description
+## Description
 
-This is an employee management application built using Angular for the frontend and .NET Core for the backend. The application allows the manager to manage employee data, including adding, editing, and deleting employees. The manager can also view the employee details or export them to the local computer.
+This is an employee management application built using Angular for the frontend and .NET Core for the backend. The application allows the manager to manage employee data, including adding, editing and deleting employees. The manager can also view the employee details or export to the local computer.
 
-The app utilizes various external libraries, including Angular Material, to enhance its user interface and provide a visually appealing experience.
+The app uses various external libraries, including Angular Material to enhance its user interface and provide a visually appealing experience.
 
-### Technologies Used
+
+## Technologies Used
 
 - **Frontend**: Angular
 - **Backend**: .NET Core
@@ -16,55 +17,60 @@ The app utilizes various external libraries, including Angular Material, to enha
 - **Design Libraries**:
   - Angular Material
 
-#### Local Database Setup
 
-To set up the local database, follow these steps:
+## Usage
 
 1. Clone the repository to your local machine:
 
-    ```
-    git clone https://github.com/ShevyKossovsky/Practicum.git
-    ```
+```
+git clone https://github.com/ShevyKossovsky/Practicum.git  
+```
 
-2. Open the console and navigate to the ***server.data*** project directory.
+2. Navigate to the client project directory.
 
-3. Create a new local database:
+3. Install the necessary dependencies
 
-    ```
-    Update-Database
-    ```
+```
+npm install
+```
 
-4. Run the backend server.
+4. Run the frontend server.
 
-### Usage
+```
+ng s -o
+```    
 
-5. Navigate to the client project directory.
+### Local Database Setup
 
-6. Install the necessary dependencies:
+To set up the local database, follow these steps:
 
-    ```
-    npm install
-    ```
+5. Open the console and navigate to the  ***server.data*** project directory.
 
-7. Run the frontend server:
+-Create a new local database:
 
-    ```
-    ng s -o
-    ```
 
-8. Access the application through your web browser:
+```
+Update-Database
+```
+  
+6. Run the backend server.
 
-    ```
-    http://localhost:4200/
-    ```
+7. Access the application through your web browser.
+   
+```
+http://localhost:4200/
+```   
 
-### License
+### Implemented Features:
 
-© 2024 Shevy Kossovsky. All rights reserved.
+- Input integrity validations ensure data consistency and accuracy.
+- Emphasis on effective division of layers and writing clean, maintainable code in the application's architecture.
+- User-friendly and visually appealing design enhances the overall user experience.
 
-### Contact Information
+## License
+© 2024 Shevy Kossovsky All rights reserved.
 
-- Phone: 0556773361
-- Email: s0556773361@gmail.com
+### contact
+0556773361 s0556773361@gmail.com
 
 ![Employee Management](/client/src/assets/screenShot_3.png)

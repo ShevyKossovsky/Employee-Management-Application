@@ -37,7 +37,7 @@ The app uses various external libraries, including Angular Material to enhance i
 4. Open the console and navigate to the  ***server.data*** project directory.
 
   ```sh
-   update-database
+  Update-Database
    ```
 5. Run the application.
 

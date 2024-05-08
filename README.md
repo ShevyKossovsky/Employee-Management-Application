@@ -18,48 +18,43 @@ The app uses various external libraries, including Angular Material to enhance i
   - Angular Material
 
 
-## Usage
+<!-- GETTING STARTED -->
+## Getting Started
 
-1. Clone the repository to your local machine:
+### Back-end (.NET)
 
-```
-git clone https://github.com/ShevyKossovsky/Practicum.git  
-```
+1. Navigate to the `server` directory.
 
-2. Navigate to the client project directory.
+2. Open the solution in Visual Studio or any other preferred IDE.
 
-3. Install the necessary dependencies
+3. Ensure you have SQL Server installed and running.
 
-```
-npm install
-```
+4. Run `update-database` command in the Package Manager Console to apply migrations and update the database schema.
 
-4. Run the frontend server.
-
-```
-ng s -o
-```    
-
-### Local Database Setup
-
-To set up the local database, follow these steps:
-
-5. Open the console and navigate to the  ***server.data*** project directory.
-
--Create a new local database:
+  ```sh
+   update-database
+   ```
+5. Run the application.
 
 
-```
-Update-Database
-```
-  
-6. Run the backend server.
+### Front-end (Angular)
 
-7. Access the application through your web browser.
-   
-```
-http://localhost:4200/
-```   
+### Installation
+
+1. Clone the repository
+   ```sh
+   git clone https://github.com/ShevyKossovsky/Employee-Management-Application
+   ```
+2. Navigate to the `client` directory
+
+3. Install NPM packages to install dependencies
+   ```sh
+   npm install
+   ```
+4. Run `ng s -o` to start the Angular development server.
+
+5. Access the application at `http://localhost:4200` through your browser.
+
 
 ### Implemented Features:
 

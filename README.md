@@ -21,6 +21,11 @@ The app uses various external libraries, including Angular Material to enhance i
 <!-- GETTING STARTED -->
 ## Getting Started
 
+ Clone the repository
+   ```sh
+   git clone https://github.com/ShevyKossovsky/Employee-Management-Application
+   ```
+
 ### Back-end (.NET)
 
 1. Navigate to the `server` directory.
@@ -41,19 +46,15 @@ The app uses various external libraries, including Angular Material to enhance i
 
 ### Installation
 
-1. Clone the repository
-   ```sh
-   git clone https://github.com/ShevyKossovsky/Employee-Management-Application
-   ```
-2. Navigate to the `client` directory
+1. Navigate to the `client` directory
 
-3. Install NPM packages to install dependencies
+2. Install NPM packages to install dependencies
    ```sh
    npm install
    ```
-4. Run `ng s -o` to start the Angular development server.
+3. Run `ng s -o` to start the Angular development server.
 
-5. Access the application at `http://localhost:4200` through your browser.
+4. Access the application at `http://localhost:4200` through your browser.
 
 
 ### Implemented Features:

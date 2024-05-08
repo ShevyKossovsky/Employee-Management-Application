@@ -34,7 +34,7 @@ The app uses various external libraries, including Angular Material to enhance i
 
 3. Ensure you have SQL Server installed and running.
 
-4. Run `update-database` command in the Package Manager Console to apply migrations and update the database schema.
+4. Open the console and navigate to the  ***server.data*** project directory.
 
   ```sh
    update-database

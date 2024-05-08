@@ -52,7 +52,11 @@ The app uses various external libraries, including Angular Material to enhance i
    ```sh
    npm install
    ```
-3. Run `ng s -o` to start the Angular development server.
+3. Run  to start the Angular development server.
+
+  ```sh
+  ng s -o
+   ```
 
 4. Access the application at `http://localhost:4200` through your browser.
 

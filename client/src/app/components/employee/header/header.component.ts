@@ -21,6 +21,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { ExportToExcelComponent } from "../export-to-excel/export-to-excel.component";
+import { ScreenshotComponent } from "../screenshot/screenshot.component";
 
 @Component({
     selector: 'app-header',
@@ -52,7 +53,7 @@ import { ExportToExcelComponent } from "../export-to-excel/export-to-excel.compo
         MatCardModule,
         MatDividerModule,
         ExportToExcelComponent,
-        
+        ScreenshotComponent
     ]
 })
 export class HeaderComponent {

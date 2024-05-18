@@ -71,4 +71,4 @@ The app uses various external libraries, including Angular Material to enhance i
 ### contact
 0556773361 s0556773361@gmail.com
 
-![Employee Management](/client/src/assets/screenShot_3.png)
+![Employee Management](/client/src/assets/screenShot_2.png)
